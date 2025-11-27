@@ -1,3 +1,4 @@
-kv_namespaces = [
-  { id = "MY_KV", binding="MY_KV" }
-]
+name = "q1x-portfolio"
+compatibility_date = "2024-05-01"
+
+pages_build_output_dir = "build/client"
