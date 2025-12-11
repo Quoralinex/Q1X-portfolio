@@ -1,5 +1,4 @@
 import { Button } from '~/components/button';
-import { DecoderText } from '~/components/decoder-text';
 import { Heading } from '~/components/heading';
 import { Section } from '~/components/section';
 import { useTheme } from '~/components/theme-provider';
@@ -8,23 +7,15 @@ import { Transition } from '~/components/transition';
 import { VisuallyHidden } from '~/components/visually-hidden';
 import { Link as RouterLink } from '@remix-run/react';
 import { useScrollToHash } from '~/hooks';
-import { Suspense, lazy } from 'react';
 import { cssProps } from '~/utils/style';
 import config from '~/config.json';
-import { useHydrated } from '~/hooks/useHydrated';
 import styles from './intro.module.css';
-
-const DisplacementSphere = lazy(() =>
-  import('./displacement-sphere').then(module => ({ default: module.DisplacementSphere }))
-);
 
 export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
   const { theme } = useTheme();
   const titleId = `${id}-title`;
   const scrollToHash = useScrollToHash();
-  const isHydrated = useHydrated();
-
-  const heroTitle = ['Building next-generation', 'infrastructure and protective systems'];
+  const heroTitle = config.role || 'Building next-generation infrastructure and protective systems';
 
   const handleScrollClick = event => {
     event.preventDefault();
@@ -44,44 +35,23 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
       <Transition in key={theme} timeout={3000}>
         {({ visible, status }) => (
           <>
-            {isHydrated && (
-              <Suspense>
-                <DisplacementSphere />
-              </Suspense>
-            )}
             <header className={styles.text}>
-              <h1 className={styles.name} data-visible={visible} id={titleId}>
-                <DecoderText text="QUORALINEX / Q1X GROUP" delay={500} />
-              </h1>
-              <Heading level={0} as="h2" className={styles.title}>
+              <Heading level={0} as="h2" className={styles.title} id={titleId}>
                 <VisuallyHidden className={styles.label}>
                   {`${config.name} portfolio overview`}
                 </VisuallyHidden>
-                <span aria-hidden className={styles.row}>
-                  <span
-                    className={styles.word}
-                    data-status={status}
-                    style={cssProps({ delay: tokens.base.durationXS })}
-                  >
-                    {heroTitle[0]}
-                  </span>
-                  <span className={styles.line} data-status={status} />
-                </span>
-                <div className={styles.row}>
-                  <Transition in timeout={{ enter: 3000, exit: 2000 }}>
-                    {({ status, nodeRef }) => (
-                      <span
-                        aria-hidden
-                        ref={nodeRef}
-                        className={styles.word}
-                        data-status={status}
-                        style={cssProps({ delay: tokens.base.durationL })}
-                      >
-                        {heroTitle[1]}
-                      </span>
-                    )}
-                  </Transition>
-                </div>
+                <Transition in timeout={{ enter: 3000, exit: 2000 }}>
+                  {({ status, nodeRef }) => (
+                    <span
+                      ref={nodeRef}
+                      className={styles.titleText}
+                      data-status={status}
+                      style={cssProps({ delay: tokens.base.durationM })}
+                    >
+                      {heroTitle}
+                    </span>
+                  )}
+                </Transition>
               </Heading>
               <p className={styles.description} data-visible={visible}>
                 A portfolio of live products and R&D spanning protective equipment, water-based energy
