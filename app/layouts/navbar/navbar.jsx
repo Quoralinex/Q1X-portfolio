@@ -150,6 +150,7 @@ export const Navbar = () => {
         onClick={handleMobileNavClick}
       >
         <img src="/q1x_master_dark.png" alt="Quoralinex logo" className={styles.logoImage} />
+        <span className={styles.logoText}>Quoralinex / Q1X</span>
       </RouterLink>
       <NavToggle onClick={() => setMenuOpen(!menuOpen)} menuOpen={menuOpen} />
       <nav className={styles.nav}>
