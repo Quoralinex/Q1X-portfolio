@@ -1,9 +1,12 @@
-node_modules
+node_modules/
+dist/
+build/
+.cache/
+.turbo/
+.vite/
+*.log
 
-/.cache
-/build
 .env
-
 .wrangler
 .dev.vars
 

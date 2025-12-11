@@ -27,6 +27,10 @@ To view the components storybook:
 npm run dev:storybook
 ```
 
+## Assets & Git LFS
+
+Portfolio images live in `public/assets/portfolio/` and are tracked with Git LFS. After cloning, run `git lfs pull` to fetch the binaries. Add or update assets only in that folder, keeping stable, human-readable filenames.
+
 ## Deployment
 
 I've set up the site using Cloudflare for hosting. Deploy the site to Cloudflare Pages:
