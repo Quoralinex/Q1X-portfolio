@@ -6,8 +6,8 @@ import { tokens } from '~/components/theme-provider/theme';
 import { Transition } from '~/components/transition';
 import { VisuallyHidden } from '~/components/visually-hidden';
 import { Link as RouterLink } from '@remix-run/react';
-import { useInterval, usePrevious, useScrollToHash } from '~/hooks';
-import { Suspense, lazy, useEffect, useState } from 'react';
+import { useScrollToHash } from '~/hooks';
+import { Suspense, lazy } from 'react';
 import { cssProps } from '~/utils/style';
 import config from '~/config.json';
 import { useHydrated } from '~/hooks/useHydrated';
@@ -19,31 +19,11 @@ const DisplacementSphere = lazy(() =>
 
 export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
   const { theme } = useTheme();
-  const { disciplines } = config;
-  const [disciplineIndex, setDisciplineIndex] = useState(0);
-  const prevTheme = usePrevious(theme);
-  const introLabel = [disciplines.slice(0, -1).join(', '), disciplines.slice(-1)[0]].join(
-    ', and '
-  );
-  const currentDiscipline = disciplines.find((item, index) => index === disciplineIndex);
   const titleId = `${id}-title`;
   const scrollToHash = useScrollToHash();
   const isHydrated = useHydrated();
 
-  useInterval(
-    () => {
-      const index = (disciplineIndex + 1) % disciplines.length;
-      setDisciplineIndex(index);
-    },
-    5000,
-    theme
-  );
-
-  useEffect(() => {
-    if (prevTheme && prevTheme !== theme) {
-      setDisciplineIndex(0);
-    }
-  }, [theme, prevTheme]);
+  const heroTitle = ['Building next-generation', 'infrastructure & protective systems'];
 
   const handleScrollClick = event => {
     event.preventDefault();
@@ -70,11 +50,11 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
             )}
             <header className={styles.text}>
               <h1 className={styles.name} data-visible={visible} id={titleId}>
-                <DecoderText text={config.name} delay={500} />
+                <DecoderText text="QUORALINEX / Q1X GROUP" delay={500} />
               </h1>
               <Heading level={0} as="h2" className={styles.title}>
                 <VisuallyHidden className={styles.label}>
-                  {`${config.role} + ${introLabel}`}
+                  {`${config.name} portfolio overview`}
                 </VisuallyHidden>
                 <span aria-hidden className={styles.row}>
                   <span
@@ -82,37 +62,33 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
                     data-status={status}
                     style={cssProps({ delay: tokens.base.durationXS })}
                   >
-                    {config.role}
+                    {heroTitle[0]}
                   </span>
                   <span className={styles.line} data-status={status} />
                 </span>
                 <div className={styles.row}>
-                  {disciplines.map(item => (
-                    <Transition
-                      unmount
-                      in={item === currentDiscipline}
-                      timeout={{ enter: 3000, exit: 2000 }}
-                      key={item}
-                    >
-                      {({ status, nodeRef }) => (
-                        <span
-                          aria-hidden
-                          ref={nodeRef}
-                          className={styles.word}
-                          data-plus={true}
-                          data-status={status}
-                          style={cssProps({ delay: tokens.base.durationL })}
-                        >
-                          {item}
-                        </span>
-                      )}
-                    </Transition>
-                  ))}
+                  <Transition in timeout={{ enter: 3000, exit: 2000 }}>
+                    {({ status, nodeRef }) => (
+                      <span
+                        aria-hidden
+                        ref={nodeRef}
+                        className={styles.word}
+                        data-status={status}
+                        style={cssProps({ delay: tokens.base.durationL })}
+                      >
+                        {heroTitle[1]}
+                      </span>
+                    )}
+                  </Transition>
                 </div>
               </Heading>
+              <p className={styles.description} data-visible={visible}>
+                A portfolio of live products and R&D spanning protective equipment, water-based energy
+                storage, data-centre consultancy, and equitable education technology.
+              </p>
             </header>
             <RouterLink
-              to="/#project-1"
+              to="/#equitable-journeys"
               className={styles.scrollIndicator}
               data-status={status}
               data-hidden={scrollIndicatorHidden}
@@ -121,7 +97,7 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
               <VisuallyHidden>Scroll to projects</VisuallyHidden>
             </RouterLink>
             <RouterLink
-              to="/#project-1"
+              to="/#equitable-journeys"
               className={styles.mobileScrollIndicator}
               data-status={status}
               data-hidden={scrollIndicatorHidden}

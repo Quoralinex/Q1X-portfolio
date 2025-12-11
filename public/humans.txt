@@ -1,31 +1,22 @@
-__  __  __
-\ \ \ \ \/
- \ \/\ \
-  \/  \/
+____   ____ __  ____
+\ \ \ / / //_/ / __\
+ \ \ V / ,<  / /_/ /
+  \_/|_/_/|_|\____/
 
 The humans.txt file explains the team, technology,
 and graphic assets behind this site humanstxt.org.
 
 _______________________________________________________________________________
 
-DESIGNER | デザイナー
+GROUP | グループ
 
-Hamish Williams
-Hand crafted design & web development
-
-Design tools:
-Figma
-Photoshop
-Blender
-
-twitter.com/hamishmw
-github.com/hamishmw
+Quoralinex (Q1X) Group
+Protective systems, AquaCore Technologies, CPMS, Equitable Journeys
 
 _______________________________________________________________________________
 
 TECHNOLOGY | テクノロジー
 
-React
 Remix
 Three.js
 Framer Motion

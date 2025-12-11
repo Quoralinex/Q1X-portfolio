@@ -75,6 +75,28 @@
   letter-spacing: -0.03em;
 }
 
+.description {
+  margin-top: var(--spaceL);
+  max-width: 760px;
+  font-size: calc((20 / 16) * 1rem);
+  line-height: 1.6;
+  color: var(--text);
+  opacity: 0;
+  transition-property: opacity, transform;
+  transition-duration: var(--durationXL);
+  transition-timing-function: var(--bezierFastoutSlowin);
+  transform: translate3d(0, var(--spaceM), 0);
+
+  @media (--mediaTablet) {
+    font-size: calc((18 / 16) * 1rem);
+  }
+
+  &[data-visible='true'] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .row {
   display: flex;
   flex-direction: row;

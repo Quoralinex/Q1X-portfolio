@@ -1,15 +1,13 @@
-import gamestackTexture2Large from '~/assets/gamestack-list-large.jpg';
-import gamestackTexture2Placeholder from '~/assets/gamestack-list-placeholder.jpg';
-import gamestackTexture2 from '~/assets/gamestack-list.jpg';
-import gamestackTextureLarge from '~/assets/gamestack-login-large.jpg';
-import gamestackTexturePlaceholder from '~/assets/gamestack-login-placeholder.jpg';
-import gamestackTexture from '~/assets/gamestack-login.jpg';
-import sliceTextureLarge from '~/assets/slice-app-large.jpg';
-import sliceTexturePlaceholder from '~/assets/slice-app-placeholder.jpg';
-import sliceTexture from '~/assets/slice-app.jpg';
-import sprTextureLarge from '~/assets/spr-lesson-builder-dark-large.jpg';
-import sprTexturePlaceholder from '~/assets/spr-lesson-builder-dark-placeholder.jpg';
-import sprTexture from '~/assets/spr-lesson-builder-dark.jpg';
+import hardlineHelmet from '~/assets/hardline-sentinel-x-helmet.png';
+import hardlineLogo from '~/assets/hardline-logo.png';
+import ejHeader from '~/assets/ej-header-logo-1024x256.png';
+import aquacoreDroplet from '~/assets/aquacore-logo-droplet.png';
+import aquacoreMolecule from '~/assets/aquacore-logo-molecule.png';
+import aquacoreCell from '~/assets/aquacore-quantum-water-cell.png';
+import aquacoreTurbines from '~/assets/aquacore-underwater-turbines.png';
+import aquacoreBatteryChart from '~/assets/aquacore-water-battery-chart.png';
+import cpmsLogo from '~/assets/cpms-logo-horizontal.svg';
+import q1xLockup from '~/assets/document_cover_logo_lockup.png';
 import { Footer } from '~/components/footer';
 import { baseMeta } from '~/utils/meta';
 import { Intro } from './intro';
@@ -41,8 +39,9 @@ export const links = () => {
 
 export const meta = () => {
   return baseMeta({
-    title: 'Designer + Developer',
-    description: `Design portfolio of ${config.name} — a product designer working on web & mobile apps with a focus on motion, experience design, and accessibility.`,
+    title: `${config.name} Portfolio`,
+    description:
+      'Quoralinex (Q1X) Group portfolio — next-generation infrastructure, protective systems, AquaCore R&D, and CPMS consultancy.',
   });
 };
 
@@ -53,10 +52,11 @@ export const Home = () => {
   const projectOne = useRef();
   const projectTwo = useRef();
   const projectThree = useRef();
+  const projectFour = useRef();
   const details = useRef();
 
   useEffect(() => {
-    const sections = [intro, projectOne, projectTwo, projectThree, details];
+    const sections = [intro, projectOne, projectTwo, projectThree, projectFour, details];
 
     const sectionObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -99,66 +99,128 @@ export const Home = () => {
         scrollIndicatorHidden={scrollIndicatorHidden}
       />
       <ProjectSummary
-        id="project-1"
+        id="equitable-journeys"
         sectionRef={projectOne}
         visible={visibleSections.includes(projectOne.current)}
         index={1}
-        title="Designing the future of education"
-        description="Designing a platform to help educators build better online courseware"
-        buttonText="View project"
-        buttonLink="/projects/smart-sparrow"
+        title="Equitable Journeys"
+        description="Equitable Journeys is a not-for-profit decision-support platform that helps learners choose the right qualifications, whether that is university, vocational training, or professional exams. The app works with councils, youth projects, charities, and employers to map real-world pathways using relatable stories, real examples, and pre-recorded coaching. Long-term, Equitable Journeys will become a pan-European guidance layer, modelling funding routes, visa options, and local support so that people from low-income backgrounds can access the same quality of information as those with private advisers."
+        buttonText="View platform roadmap"
+        buttonLink="/#equitable-journeys"
         model={{
-          type: 'laptop',
-          alt: 'Smart Sparrow lesson builder',
-          textures: [
-            {
-              srcSet: `${sprTexture} 1280w, ${sprTextureLarge} 2560w`,
-              placeholder: sprTexturePlaceholder,
-            },
-          ],
+          type: 'image',
+          alt: 'Equitable Journeys header wordmark',
+          image: {
+            srcSet: `${ejHeader} 1024w, ${ejHeader} 2048w`,
+            placeholder: ejHeader,
+            width: 1024,
+            height: 256,
+          },
         }}
       />
       <ProjectSummary
-        id="project-2"
+        id="sentinel-x"
         alternate
         sectionRef={projectTwo}
         visible={visibleSections.includes(projectTwo.current)}
         index={2}
-        title="Video game progress tracking"
-        description="Design and development for a video game tracking app built in React Native"
-        buttonText="View website"
-        buttonLink="https://gamestack.hamishw.com"
+        title="Hardline / Sentinel-X"
+        description="Hardline is our protective-equipment brand, with Sentinel-X as its flagship modular armour platform. The Sentinel-X helmet combines an ALON transparent ceramic visor, a carbon-fibre and Kevlar composite shell, and a modular HUD module powered by smartphone-class sensors. The long-term goal is a family of lightweight helmets and body armour that integrate ballistic protection, situational awareness, and networked sensing. We are designing for defence, VIP protection, critical-infrastructure security, and first-responder use where weight, comfort, and data-driven decision-making matter as much as stopping power."
+        buttonText="Explore Sentinel-X concept"
+        buttonLink="/#sentinel-x"
         model={{
-          type: 'phone',
-          alt: 'App login screen',
-          textures: [
+          type: 'image',
+          alt: 'Sentinel-X helmet concept render',
+          image: {
+            srcSet: `${hardlineHelmet} 1400w, ${hardlineHelmet} 2400w`,
+            placeholder: hardlineHelmet,
+            width: 1600,
+            height: 1600,
+          },
+          badge: {
+            src: hardlineLogo,
+            alt: 'Hardline logo',
+          },
+        }}
+      />
+      <ProjectSummary
+        id="aquacore"
+        sectionRef={projectThree}
+        visible={visibleSections.includes(projectThree.current)}
+        index={3}
+        title="AquaCore Technologies"
+        description="AquaCore Technologies explores how water can act as both an energy storage medium and an information-rich material. Our R&D spans three fronts: • Water-based batteries and safer grid-scale storage, inspired by emerging aqueous-electrolyte chemistries. • ‘Quantum water’ memory cells that investigate how structured water layers behave under electromagnetic fields. • Subsea and river-based generation modules, such as modular underwater turbines designed to sit unobtrusively on the seabed. The ambition is to build a portfolio of IP and demonstrators that make water-centric systems a realistic alternative to conventional lithium and purely solid-state approaches."
+        buttonText="View AquaCore R&D"
+        buttonLink="/#aquacore"
+        model={{
+          type: 'gallery',
+          alt: 'AquaCore subsea turbines and research graphics',
+          primary: {
+            srcSet: `${aquacoreTurbines} 1600w, ${aquacoreTurbines} 2400w`,
+            placeholder: aquacoreTurbines,
+            width: 2000,
+            height: 1125,
+            alt: 'AquaCore modular underwater turbines on the ocean floor',
+          },
+          gallery: [
             {
-              srcSet: `${gamestackTexture} 375w, ${gamestackTextureLarge} 750w`,
-              placeholder: gamestackTexturePlaceholder,
+              srcSet: `${aquacoreMolecule} 800w, ${aquacoreMolecule} 1600w`,
+              placeholder: aquacoreMolecule,
+              width: 1200,
+              height: 1200,
+              alt: 'AquaCore molecule brand lockup',
             },
             {
-              srcSet: `${gamestackTexture2} 375w, ${gamestackTexture2Large} 750w`,
-              placeholder: gamestackTexture2Placeholder,
+              srcSet: `${aquacoreCell} 800w, ${aquacoreCell} 1600w`,
+              placeholder: aquacoreCell,
+              width: 1200,
+              height: 1200,
+              alt: 'Quantum water cell concept diagram',
+            },
+            {
+              srcSet: `${aquacoreBatteryChart} 800w, ${aquacoreBatteryChart} 1600w`,
+              placeholder: aquacoreBatteryChart,
+              width: 1200,
+              height: 1200,
+              alt: 'Water battery performance comparison chart',
+            },
+            {
+              srcSet: `${aquacoreDroplet} 800w, ${aquacoreDroplet} 1600w`,
+              placeholder: aquacoreDroplet,
+              width: 1200,
+              height: 1200,
+              alt: 'AquaCore droplet logo',
             },
           ],
         }}
       />
       <ProjectSummary
-        id="project-3"
-        sectionRef={projectThree}
-        visible={visibleSections.includes(projectThree.current)}
-        index={3}
-        title="Biomedical image collaboration"
-        description="Increasing the amount of collaboration in Slice, an app for biomedical imaging"
-        buttonText="View project"
-        buttonLink="/projects/slice"
+        id="cpms"
+        alternate
+        sectionRef={projectFour}
+        visible={visibleSections.includes(projectFour.current)}
+        index={4}
+        title="Quoralinex Consultancy & CPMS"
+        description="Quoralinex Consultancy provides specialist cost, commercial, and project management for complex capital projects: hyperscale data centres, pharmaceutical plants, giga-factories, and critical civil infrastructure. Our CPMS (Contract & Project Management Suite) underpins this work. CPMS combines contract administration, EDMS, and structured change control into a single environment that can export contract data to PDF, Word, and Excel, and import contract baselines from clients. The roadmap includes: • Deep contract-type support (NEC, FIDIC, JCT, and custom frameworks). • Automated capture of contract amendments and clause-linked correspondence. • In-app chat for project teams, integrated AI assistants, and contract-aware chatbots to surface obligations and risks in plain language."
+        buttonText="Learn about CPMS"
+        buttonLink="https://cpms.quoralinex.com"
         model={{
-          type: 'laptop',
-          alt: 'Annotating a biomedical image in the Slice app',
-          textures: [
+          type: 'gallery',
+          alt: 'Quoralinex Consultancy and CPMS branding',
+          primary: {
+            srcSet: `${cpmsLogo} 1200w, ${cpmsLogo} 1800w`,
+            placeholder: cpmsLogo,
+            width: 1600,
+            height: 480,
+            alt: 'CPMS horizontal logo',
+          },
+          gallery: [
             {
-              srcSet: `${sliceTexture} 800w, ${sliceTextureLarge} 1920w`,
-              placeholder: sliceTexturePlaceholder,
+              srcSet: `${q1xLockup} 1200w, ${q1xLockup} 1800w`,
+              placeholder: q1xLockup,
+              width: 1600,
+              height: 900,
+              alt: 'Quoralinex group lockup',
             },
           ],
         }}
