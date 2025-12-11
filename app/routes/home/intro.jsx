@@ -6,7 +6,6 @@ import { tokens } from '~/components/theme-provider/theme';
 import { Transition } from '~/components/transition';
 import { VisuallyHidden } from '~/components/visually-hidden';
 import { Link as RouterLink } from '@remix-run/react';
-import { Suspense, lazy } from 'react';
 import { useScrollToHash } from '~/hooks';
 import { Suspense, lazy } from 'react';
 import { cssProps } from '~/utils/style';
