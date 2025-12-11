@@ -1,5 +1,4 @@
 import { Icon } from '~/components/icon';
-import { Monogram } from '~/components/monogram';
 import { useTheme } from '~/components/theme-provider';
 import { tokens } from '~/components/theme-provider/theme';
 import { Transition } from '~/components/transition';
@@ -150,7 +149,7 @@ export const Navbar = () => {
         aria-label={`${config.name}, ${config.role}`}
         onClick={handleMobileNavClick}
       >
-        <Monogram highlight />
+        <img src="/q1x_master_dark.png" alt="Quoralinex logo" className={styles.logoImage} />
       </RouterLink>
       <NavToggle onClick={() => setMenuOpen(!menuOpen)} menuOpen={menuOpen} />
       <nav className={styles.nav}>
@@ -193,7 +192,44 @@ export const Navbar = () => {
               >
                 {label}
               </RouterLink>
-            ))}
+            )
+          )}
+        </div>
+        <NavbarIcons desktop />
+      </nav>
+      <Transition unmount in={menuOpen} timeout={msToNum(tokens.base.durationL)}>
+        {({ visible, nodeRef }) => (
+          <nav className={styles.mobileNav} data-visible={visible} ref={nodeRef}>
+            {navLinks.map(({ label, pathname, external }, index) => {
+              const linkProps = {
+                key: label,
+                className: styles.mobileNavLink,
+                'data-visible': visible,
+                onClick: () => setMenuOpen(false),
+                style: cssProps({
+                  transitionDelay: numToMs(
+                    Number(msToNum(tokens.base.durationS)) + index * 50
+                  ),
+                }),
+              };
+
+              return external ? (
+                <a href={pathname} {...linkProps}>
+                  {label}
+                </a>
+              ) : (
+                <RouterLink
+                  unstable_viewTransition
+                  prefetch="intent"
+                  to={pathname}
+                  aria-current={getCurrent(pathname)}
+                  onClick={handleMobileNavClick}
+                  {...linkProps}
+                >
+                  {label}
+                </RouterLink>
+              );
+            })}
             <NavbarIcons />
             <ThemeToggle isMobile />
           </nav>
