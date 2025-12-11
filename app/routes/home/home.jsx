@@ -39,9 +39,9 @@ export const links = () => {
 
 export const meta = () => {
   return baseMeta({
-    title: `${config.name} Portfolio`,
-    description:
-      'Quoralinex (Q1X) Group portfolio — next-generation infrastructure, protective systems, AquaCore R&D, and CPMS consultancy.',
+    title: config.meta?.title,
+    prefix: null,
+    description: config.meta?.description,
   });
 };
 
@@ -98,137 +98,141 @@ export const Home = () => {
         sectionRef={intro}
         scrollIndicatorHidden={scrollIndicatorHidden}
       />
-      <ProjectSummary
-        id="equitable-journeys"
-        sectionRef={projectOne}
-        visible={visibleSections.includes(projectOne.current)}
-        index={1}
-        title="Equitable Journeys"
-        description="Equitable Journeys is a not-for-profit decision-support platform that helps learners choose the right qualifications, whether that is university, vocational training, or professional exams. The app works with councils, youth projects, charities, and employers to map real-world pathways using relatable stories, real examples, and pre-recorded coaching. Long-term, Equitable Journeys will become a pan-European guidance layer, modelling funding routes, visa options, and local support so that people from low-income backgrounds can access the same quality of information as those with private advisers."
-        buttonText="View platform roadmap"
-        buttonLink="/#equitable-journeys"
-        model={{
-          type: 'image',
-          alt: 'Equitable Journeys header wordmark',
-          image: {
-            srcSet: `${ejHeader} 1024w, ${ejHeader} 2048w`,
-            placeholder: ejHeader,
-            width: 1024,
-            height: 256,
-          },
-        }}
-      />
-      <ProjectSummary
-        id="sentinel-x"
-        alternate
-        sectionRef={projectTwo}
-        visible={visibleSections.includes(projectTwo.current)}
-        index={2}
-        title="Hardline / Sentinel-X"
-        description="Hardline is our protective-equipment brand, with Sentinel-X as its flagship modular armour platform. The Sentinel-X helmet combines an ALON transparent ceramic visor, a carbon-fibre and Kevlar composite shell, and a modular HUD module powered by smartphone-class sensors. The long-term goal is a family of lightweight helmets and body armour that integrate ballistic protection, situational awareness, and networked sensing. We are designing for defence, VIP protection, critical-infrastructure security, and first-responder use where weight, comfort, and data-driven decision-making matter as much as stopping power."
-        buttonText="Explore Sentinel-X concept"
-        buttonLink="/#sentinel-x"
-        model={{
-          type: 'image',
-          alt: 'Sentinel-X helmet concept render',
-          image: {
-            srcSet: `${hardlineHelmet} 1400w, ${hardlineHelmet} 2400w`,
-            placeholder: hardlineHelmet,
-            width: 1600,
-            height: 1600,
-          },
-          badge: {
-            src: hardlineLogo,
-            alt: 'Hardline logo',
-          },
-        }}
-      />
-      <ProjectSummary
-        id="aquacore"
-        sectionRef={projectThree}
-        visible={visibleSections.includes(projectThree.current)}
-        index={3}
-        title="AquaCore Technologies"
-        description="AquaCore Technologies explores how water can act as both an energy storage medium and an information-rich material. Our R&D spans three fronts: • Water-based batteries and safer grid-scale storage, inspired by emerging aqueous-electrolyte chemistries. • ‘Quantum water’ memory cells that investigate how structured water layers behave under electromagnetic fields. • Subsea and river-based generation modules, such as modular underwater turbines designed to sit unobtrusively on the seabed. The ambition is to build a portfolio of IP and demonstrators that make water-centric systems a realistic alternative to conventional lithium and purely solid-state approaches."
-        buttonText="View AquaCore R&D"
-        buttonLink="/#aquacore"
-        model={{
-          type: 'gallery',
-          alt: 'AquaCore subsea turbines and research graphics',
-          primary: {
-            srcSet: `${aquacoreTurbines} 1600w, ${aquacoreTurbines} 2400w`,
-            placeholder: aquacoreTurbines,
-            width: 2000,
-            height: 1125,
-            alt: 'AquaCore modular underwater turbines on the ocean floor',
-          },
-          gallery: [
-            {
-              srcSet: `${aquacoreMolecule} 800w, ${aquacoreMolecule} 1600w`,
-              placeholder: aquacoreMolecule,
-              width: 1200,
-              height: 1200,
-              alt: 'AquaCore molecule brand lockup',
+      <div id="portfolio">
+        <ProjectSummary
+          id="equitable-journeys"
+          sectionRef={projectOne}
+          visible={visibleSections.includes(projectOne.current)}
+          index={1}
+          title="Equitable Journeys"
+          description="Equitable Journeys is a not-for-profit platform that helps learners choose the right qualifications, funding routes, and study options across the UK and Europe. We work with councils, youth projects, charities, and employers to map real-world pathways using relatable stories, real examples, and pre-recorded coaching, with the goal of delivering guidance that matches the quality available to those with private advisers."
+          buttonText="View platform roadmap"
+          buttonLink="/#equitable-journeys"
+          model={{
+            type: 'image',
+            alt: 'Equitable Journeys logo and interface header',
+            image: {
+              srcSet: `${ejHeader} 1024w, ${ejHeader} 2048w`,
+              placeholder: ejHeader,
+              width: 1024,
+              height: 256,
             },
-            {
-              srcSet: `${aquacoreCell} 800w, ${aquacoreCell} 1600w`,
-              placeholder: aquacoreCell,
-              width: 1200,
-              height: 1200,
-              alt: 'Quantum water cell concept diagram',
-            },
-            {
-              srcSet: `${aquacoreBatteryChart} 800w, ${aquacoreBatteryChart} 1600w`,
-              placeholder: aquacoreBatteryChart,
-              width: 1200,
-              height: 1200,
-              alt: 'Water battery performance comparison chart',
-            },
-            {
-              srcSet: `${aquacoreDroplet} 800w, ${aquacoreDroplet} 1600w`,
-              placeholder: aquacoreDroplet,
-              width: 1200,
-              height: 1200,
-              alt: 'AquaCore droplet logo',
-            },
-          ],
-        }}
-      />
-      <ProjectSummary
-        id="cpms"
-        alternate
-        sectionRef={projectFour}
-        visible={visibleSections.includes(projectFour.current)}
-        index={4}
-        title="Quoralinex Consultancy & CPMS"
-        description="Quoralinex Consultancy provides specialist cost, commercial, and project management for complex capital projects: hyperscale data centres, pharmaceutical plants, giga-factories, and critical civil infrastructure. Our CPMS (Contract & Project Management Suite) underpins this work. CPMS combines contract administration, EDMS, and structured change control into a single environment that can export contract data to PDF, Word, and Excel, and import contract baselines from clients. The roadmap includes: • Deep contract-type support (NEC, FIDIC, JCT, and custom frameworks). • Automated capture of contract amendments and clause-linked correspondence. • In-app chat for project teams, integrated AI assistants, and contract-aware chatbots to surface obligations and risks in plain language."
-        buttonText="Learn about CPMS"
-        buttonLink="https://cpms.quoralinex.com"
-        model={{
-          type: 'gallery',
-          alt: 'Quoralinex Consultancy and CPMS branding',
-          primary: {
-            srcSet: `${cpmsLogo} 1200w, ${cpmsLogo} 1800w`,
-            placeholder: cpmsLogo,
-            width: 1600,
-            height: 480,
-            alt: 'CPMS horizontal logo',
-          },
-          gallery: [
-            {
-              srcSet: `${q1xLockup} 1200w, ${q1xLockup} 1800w`,
-              placeholder: q1xLockup,
+          }}
+        />
+        <ProjectSummary
+          id="sentinel-x"
+          alternate
+          sectionRef={projectTwo}
+          visible={visibleSections.includes(projectTwo.current)}
+          index={2}
+          title="Hardline / Sentinel-X"
+          description="Hardline is our protective-equipment brand, with Sentinel-X as its flagship modular armour platform combining ballistic protection, integrated sensors, and a HUD-ready helmet. The Sentinel-X helmet uses an ALON transparent ceramic visor, a carbon-fibre and Kevlar composite shell, and a modular side module sized for smartphone-class processors and batteries. Our long-term goal is a family of lightweight helmets and body armour for defence, VIP protection, critical-infrastructure security, and first responders."
+          buttonText="Explore Sentinel-X concept"
+          buttonLink="/#sentinel-x"
+          model={{
+            type: 'image',
+            alt: 'Sentinel-X ballistic helmet concept with ALON visor and modular side module',
+            image: {
+              srcSet: `${hardlineHelmet} 1400w, ${hardlineHelmet} 2400w`,
+              placeholder: hardlineHelmet,
               width: 1600,
-              height: 900,
-              alt: 'Quoralinex group lockup',
+              height: 1600,
             },
-          ],
-        }}
-      />
+            badge: {
+              src: hardlineLogo,
+              alt: 'Hardline logo',
+            },
+          }}
+        />
+        <ProjectSummary
+          id="aquacore"
+          sectionRef={projectThree}
+          visible={visibleSections.includes(projectThree.current)}
+          index={3}
+          title="AquaCore Technologies"
+          description="AquaCore explores how water can act as both an energy storage medium and an information-rich material, from safer water-based batteries to experimental quantum water cells. Our R&D spans aqueous-electrolyte batteries, thin-film quantum water memory cells, and modular subsea turbines for low-impact generation, building IP and demonstrators that make water-centric systems a realistic alternative to conventional lithium and purely solid-state approaches."
+          buttonText="View AquaCore R&D"
+          buttonLink="/#aquacore"
+          model={{
+            type: 'gallery',
+            alt: 'AquaCore subsea turbines and research graphics',
+            primary: {
+              srcSet: `${aquacoreTurbines} 1600w, ${aquacoreTurbines} 2400w`,
+              placeholder: aquacoreTurbines,
+              width: 2000,
+              height: 1125,
+              alt: 'Underwater turbine array concept for tidal or current-based power',
+            },
+            gallery: [
+              {
+                srcSet: `${aquacoreMolecule} 800w, ${aquacoreMolecule} 1600w`,
+                placeholder: aquacoreMolecule,
+                width: 1200,
+                height: 1200,
+                alt: 'AquaCore molecule brand lockup',
+              },
+              {
+                srcSet: `${aquacoreCell} 800w, ${aquacoreCell} 1600w`,
+                placeholder: aquacoreCell,
+                width: 1200,
+                height: 1200,
+                alt: 'Diagram of a quantum water memory cell with encapsulated water layer',
+              },
+              {
+                srcSet: `${aquacoreBatteryChart} 800w, ${aquacoreBatteryChart} 1600w`,
+                placeholder: aquacoreBatteryChart,
+                width: 1200,
+                height: 1200,
+                alt: 'Comparison chart of water-based battery versus lithium-ion and solid-state batteries',
+              },
+              {
+                srcSet: `${aquacoreDroplet} 800w, ${aquacoreDroplet} 1600w`,
+                placeholder: aquacoreDroplet,
+                width: 1200,
+                height: 1200,
+                alt: 'AquaCore droplet logo',
+              },
+            ],
+          }}
+        />
+        <ProjectSummary
+          id="cpms-consultancy"
+          alternate
+          sectionRef={projectFour}
+          visible={visibleSections.includes(projectFour.current)}
+          index={4}
+          title="Quoralinex Consultancy & CPMS"
+          description="Quoralinex Consultancy provides specialist cost, commercial, and project management for complex capital projects, powered by our CPMS contract and project management suite. We support hyperscale data centres, pharmaceutical plants, giga-factories, and critical civil infrastructure with contract administration, EDMS, and structured change control that export to PDF, Word, and Excel and import client baselines. The roadmap includes deep support for NEC, FIDIC, and JCT, automated capture of amendments and clause-linked correspondence, plus in-app chat and AI assistants for contract-aware guidance."
+          buttonText="Learn about CPMS"
+          buttonLink="/cpms"
+          secondaryButtonText="Consultancy services overview"
+          secondaryButtonLink="/consultancy"
+          model={{
+            type: 'gallery',
+            alt: 'CPMS logo representing Quoralinex contract and project management suite',
+            primary: {
+              srcSet: `${cpmsLogo} 1200w, ${cpmsLogo} 1800w`,
+              placeholder: cpmsLogo,
+              width: 1600,
+              height: 480,
+              alt: 'CPMS logo representing Quoralinex contract and project management suite',
+            },
+            gallery: [
+              {
+                srcSet: `${q1xLockup} 1200w, ${q1xLockup} 1800w`,
+                placeholder: q1xLockup,
+                width: 1600,
+                height: 900,
+                alt: 'Quoralinex group lockup',
+              },
+            ],
+          }}
+        />
+      </div>
       <Profile
         sectionRef={details}
         visible={visibleSections.includes(details.current)}
-        id="details"
+        id="about"
       />
       <Footer />
     </div>

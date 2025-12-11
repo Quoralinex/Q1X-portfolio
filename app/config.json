@@ -1,12 +1,23 @@
 {
+  "meta": {
+    "title": "Quoralinex (Q1X) – Portfolio",
+    "description": "A living portfolio of Quoralinex (Q1X) products and R&D, from protective systems and water-based energy storage to data-centre consultancy and equitable education technology."
+  },
+  "profile": {
+    "name": "Quoralinex (Q1X) Group",
+    "role": "Building next-generation infrastructure and protective systems",
+    "company": "Independent R&D and consultancy group",
+    "location": "UK and Europe",
+    "headshot": "/q1x_master_dark.png"
+  },
   "name": "Quoralinex (Q1X) Group",
-  "role": "Infrastructure & Protective Systems",
+  "role": "Building next-generation infrastructure and protective systems",
   "disciplines": [
     "Water-based energy storage",
     "Protective equipment",
     "Contract platforms"
   ],
-  "url": "https://quoralinex.com",
+  "url": "https://q1x-portfolio-admin.q1x.xyz",
   "bluesky": "",
   "figma": "",
   "github": "",

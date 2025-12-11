@@ -1,0 +1,8 @@
+.cpms {
+  --projectTitleWidth: 720px;
+}
+
+.paragraph {
+  margin-bottom: var(--spaceL);
+  color: var(--textLight);
+}

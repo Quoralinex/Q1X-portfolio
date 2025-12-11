@@ -10,5 +10,8 @@ export const Footer = ({ className }) => (
         {`© 2025 ${config.name}. All rights reserved.`}
       </span>
     </Text>
+    <Text size="s" align="center" className={styles.tagline}>
+      Part of an ongoing portfolio of products and research projects.
+    </Text>
   </footer>
 );
