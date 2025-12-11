@@ -1,1 +1,5 @@
-public/assets/portfolio/* filter=lfs diff=lfs merge=lfs -text
+public/assets/portfolio/*.psd filter=lfs diff=lfs merge=lfs -text
+public/assets/portfolio/*.png filter=lfs diff=lfs merge=lfs -text
+public/assets/portfolio/*.jpg filter=lfs diff=lfs merge=lfs -text
+public/assets/portfolio/*.jpeg filter=lfs diff=lfs merge=lfs -text
+public/assets/portfolio/*.svg filter=lfs diff=lfs merge=lfs -text
