@@ -1,8 +1,11 @@
 .summary {
   padding: clamp(4rem, 6vw, 6rem) clamp(1.5rem, 4vw, 2.75rem);
+  display: flex;
+  justify-content: center;
 }
 
 .content {
+  width: 100%;
   max-width: 1220px;
   margin: 0 auto;
   display: grid;
@@ -100,7 +103,7 @@
 
 .previewImage {
   width: 100%;
-  max-width: 680px;
+  max-width: min(720px, 100%);
   display: grid;
   gap: var(--spaceL);
   justify-items: center;
@@ -120,8 +123,8 @@
 
 .brandBadge {
   position: absolute;
-  top: var(--spaceL);
-  right: var(--spaceL);
+  top: clamp(var(--spaceM), 2vw, var(--spaceL));
+  right: clamp(var(--spaceM), 2vw, var(--spaceL));
   background: color-mix(in lab, var(--surface1) 90%, transparent);
   border: 1px solid color-mix(in lab, var(--text) 12%, transparent);
   border-radius: 16px;
@@ -129,7 +132,7 @@
   box-shadow: 0 10px 40px color-mix(in lab, var(--shadow) 30%, transparent);
 
   img {
-    width: 120px;
+    width: clamp(84px, 12vw, 120px);
     height: auto;
     display: block;
   }
@@ -152,6 +155,7 @@
   :global(img) {
     width: 100%;
     height: auto;
+    max-height: 520px;
     object-fit: contain;
     display: block;
   }
@@ -172,6 +176,7 @@
   :global(img) {
     width: 100%;
     height: auto;
+    max-height: 320px;
     object-fit: contain;
   }
 }
