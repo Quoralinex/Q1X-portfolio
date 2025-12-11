@@ -1,3 +1,4 @@
+import { Button } from '~/components/button';
 import { DecoderText } from '~/components/decoder-text';
 import { Heading } from '~/components/heading';
 import { Section } from '~/components/section';
@@ -23,7 +24,7 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
   const scrollToHash = useScrollToHash();
   const isHydrated = useHydrated();
 
-  const heroTitle = ['Building next-generation', 'infrastructure & protective systems'];
+  const heroTitle = ['Building next-generation', 'infrastructure and protective systems'];
 
   const handleScrollClick = event => {
     event.preventDefault();
@@ -86,9 +87,14 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
                 A portfolio of live products and R&D spanning protective equipment, water-based energy
                 storage, data-centre consultancy, and equitable education technology.
               </p>
+              <div className={styles.actions} data-visible={visible}>
+                <Button href="/#portfolio" iconEnd="arrow-right" iconHoverShift>
+                  View the portfolio
+                </Button>
+              </div>
             </header>
             <RouterLink
-              to="/#equitable-journeys"
+              to="/#portfolio"
               className={styles.scrollIndicator}
               data-status={status}
               data-hidden={scrollIndicatorHidden}
@@ -97,7 +103,7 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
               <VisuallyHidden>Scroll to projects</VisuallyHidden>
             </RouterLink>
             <RouterLink
-              to="/#equitable-journeys"
+              to="/#portfolio"
               className={styles.mobileScrollIndicator}
               data-status={status}
               data-hidden={scrollIndicatorHidden}

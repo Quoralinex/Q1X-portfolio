@@ -18,15 +18,14 @@ const ProfileText = ({ visible, titleId }) => (
       <DecoderText text="About Quoralinex / Q1X" start={visible} delay={500} />
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      Quoralinex (Q1X) is a small, independent group focused on the intersection of
-      infrastructure, protective systems, and applied research. We build and test concepts that
-      sit slightly ahead of the market: modular armour, water-based energy storage, and contract
-      platforms designed for multi-billion-euro data-centre and infrastructure programmes.
+      Quoralinex (Q1X) is an independent group working at the intersection of infrastructure,
+      protective systems, and applied research.
     </Text>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      The portfolio on this page is a snapshot of ongoing work. Some products are already being
-      piloted with partners, others are early-stage R&D that will mature into standalone ventures
-      or licensable IP.
+      We design and test concepts that sit slightly ahead of the market: modular armour, water-based
+      energy storage, and contract platforms built for multi-billion-euro data-centre and
+      infrastructure programmes. Some products are already in pilot with partners, others are
+      early-stage R&D that will grow into standalone ventures or licensable IP.
     </Text>
   </Fragment>
 );
@@ -52,13 +51,12 @@ export const Profile = ({ id, visible, sectionRef }) => {
             <div className={styles.column}>
               <ProfileText visible={visible} titleId={titleId} />
               <Button
-                secondary
                 className={styles.button}
                 data-visible={visible}
-                href="/#equitable-journeys"
+                href="/contact"
                 icon="send"
               >
-                Explore the portfolio
+                Contact us
               </Button>
             </div>
             <div className={styles.column}>
@@ -70,7 +68,7 @@ export const Profile = ({ id, visible, sectionRef }) => {
                   collapseDelay={1000}
                 />
                 <div className={styles.tagText} data-visible={visible}>
-                  About me
+                  About Q1X
                 </div>
               </div>
               <div className={styles.image}>
@@ -82,7 +80,7 @@ export const Profile = ({ id, visible, sectionRef }) => {
                   width={1600}
                   height={900}
                   sizes={`(max-width: ${media.mobile}px) 100vw, 480px`}
-                  alt="Quoralinex group logotype"
+                  alt="Quoralinex Q1X group logo"
                 />
                 <svg className={styles.svg} data-visible={visible} viewBox="0 0 136 766">
                   <use href={`${katakana}#katakana-profile`} />

@@ -318,13 +318,16 @@
   }
 }
 
-.button {
+.buttonGroup {
   transition-property: opacity;
   transition-timing-function: var(--bezierFastoutSlowin);
   transition-duration: var(--durationXL);
   transition-delay: var(--durationXL);
   transform: translate3d(0, var(--spaceL), 0);
   opacity: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spaceM);
 
   @media (--mediaUseMotion) {
     transition-property: transform, opacity;
@@ -335,4 +338,8 @@
     transform: none;
     opacity: 1;
   }
+}
+
+.secondaryButton {
+  --button-bg: transparent;
 }

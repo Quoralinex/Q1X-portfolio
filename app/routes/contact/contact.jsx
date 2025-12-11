@@ -22,7 +22,7 @@ export const meta = () => {
   return baseMeta({
     title: 'Contact',
     description:
-      'Send me a message if you’re interested in discussing a project or if you just want to say hi',
+      'Contact Quoralinex (Q1X) about pilots, consultancy, or collaboration across our portfolio.',
   });
 };
 
@@ -119,13 +119,29 @@ export const Contact = () => {
               as="h1"
               style={getDelay(tokens.base.durationXS, initDelay, 0.3)}
             >
-              <DecoderText text="Say hello" start={status !== 'exited'} delay={300} />
+              <DecoderText
+                text="Contact Quoralinex (Q1X)"
+                start={status !== 'exited'}
+                delay={300}
+              />
             </Heading>
             <Divider
               className={styles.divider}
               data-status={status}
               style={getDelay(tokens.base.durationXS, initDelay, 0.4)}
             />
+            <Text
+              className={styles.intro}
+              data-status={status}
+              size="m"
+              as="p"
+              style={getDelay(tokens.base.durationS, initDelay)}
+            >
+              If you’d like to talk about pilots, consultancy, or collaboration on any of our products, send
+              us a message using the form below. You can also email us directly at{' '}
+              <a href="mailto:info@quoralinex.com">info@quoralinex.com</a> and we’ll route your enquiry to
+              the right project lead.
+            </Text>
             {/* Hidden honeypot field to identify bots */}
             <Input
               className={styles.botkiller}
@@ -215,7 +231,7 @@ export const Contact = () => {
               data-status={status}
               style={getDelay(tokens.base.durationXS)}
             >
-              I’ll get back to you within a couple days, sit tight
+              We’ll get back to you within a couple days, sit tight
             </Text>
             <Button
               secondary

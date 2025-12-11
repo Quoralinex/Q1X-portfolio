@@ -97,6 +97,20 @@
   }
 }
 
+.actions {
+  margin-top: var(--spaceL);
+  opacity: 0;
+  transition-property: opacity, transform;
+  transition-duration: var(--durationXL);
+  transition-timing-function: var(--bezierFastoutSlowin);
+  transform: translate3d(0, var(--spaceM), 0);
+
+  &[data-visible='true'] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .row {
   display: flex;
   flex-direction: row;
