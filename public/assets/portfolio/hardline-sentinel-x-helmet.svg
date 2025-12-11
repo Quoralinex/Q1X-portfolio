@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Hardline Sentinel-X Helmet Placeholder</title>
+  <desc id="desc">Stylized gradient frame representing Sentinel-X helmet artwork</desc>
+  <defs>
+    <linearGradient id="grad-helmet" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1324" />
+      <stop offset="50%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0.2" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" rx="48" fill="url(#grad-helmet)" />
+  <rect x="64" y="64" width="1072" height="672" rx="40" fill="rgba(255,255,255,0.05)" stroke="#22d3ee" stroke-width="4" />
+  <circle cx="600" cy="360" r="220" fill="url(#glow)" />
+  <rect x="420" y="240" width="360" height="240" rx="120" fill="#0ea5e9" fill-opacity="0.25" stroke="#38bdf8" stroke-width="8" />
+  <path d="M430 460 C520 520 680 520 770 460" fill="none" stroke="#a5f3fc" stroke-width="12" stroke-linecap="round" />
+  <text x="50%" y="640" text-anchor="middle" fill="#e2e8f0" font-family="'Inter', 'Segoe UI', sans-serif" font-size="54" font-weight="700" letter-spacing="1.5">
+    Sentinel-X Helmet
+  </text>
+</svg>

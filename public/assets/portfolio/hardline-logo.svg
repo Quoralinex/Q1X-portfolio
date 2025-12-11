@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" role="img" aria-labelledby="title desc">
+  <title id="title">Hardline Logo Placeholder</title>
+  <desc id="desc">Simple badge representing the Hardline brand</desc>
+  <defs>
+    <linearGradient id="grad-hardline" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#22d3ee" />
+    </linearGradient>
+  </defs>
+  <rect width="900" height="360" rx="32" fill="url(#grad-hardline)" />
+  <rect x="28" y="28" width="844" height="304" rx="28" fill="rgba(255,255,255,0.08)" stroke="#38bdf8" stroke-width="3" />
+  <text x="50%" y="55%" text-anchor="middle" fill="#e2e8f0" font-family="'Inter', 'Segoe UI', sans-serif" font-size="80" font-weight="800">
+    Hardline
+  </text>
+  <text x="50%" y="72%" text-anchor="middle" fill="#a5f3fc" font-family="'Inter', 'Segoe UI', sans-serif" font-size="32" font-weight="600" letter-spacing="2">
+    Protective Systems
+  </text>
+</svg>

@@ -27,9 +27,9 @@ To view the components storybook:
 npm run dev:storybook
 ```
 
-## Assets & Git LFS
+## Assets
 
-Portfolio images live in `public/assets/portfolio/` and are tracked with Git LFS. After cloning, run `git lfs pull` to fetch the binaries. Add or update assets only in that folder, keeping stable, human-readable filenames.
+Portfolio illustrations live in `public/assets/portfolio/` and are now lightweight SVG placeholders (no Git LFS or binary blobs required). Feel free to replace them with branded artwork while keeping the same filenames.
 
 ## Deployment
 

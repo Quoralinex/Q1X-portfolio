@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720" role="img" aria-labelledby="title desc">
+  <title id="title">AquaCore Droplet Logo Placeholder</title>
+  <desc id="desc">Droplet shaped gradient for AquaCore mark</desc>
+  <defs>
+    <linearGradient id="grad-droplet" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#0ea5e9" />
+    </linearGradient>
+  </defs>
+  <rect width="720" height="720" rx="48" fill="#0b1120" />
+  <path d="M360 110 C260 250 220 320 220 400 C220 520 280 610 360 610 C440 610 500 520 500 400 C500 320 460 250 360 110 Z" fill="url(#grad-droplet)" stroke="#a5f3fc" stroke-width="10" />
+  <text x="50%" y="670" text-anchor="middle" fill="#e2e8f0" font-family="'Inter', 'Segoe UI', sans-serif" font-size="48" font-weight="700">
+    AquaCore Droplet
+  </text>
+</svg>

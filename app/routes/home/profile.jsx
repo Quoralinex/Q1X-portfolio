@@ -7,7 +7,7 @@ import { Text } from '~/components/text';
 import { Transition } from '~/components/transition';
 import { useState } from 'react';
 import { media } from '~/utils/style';
-const q1xLockup = '/assets/portfolio/document_cover_logo_lockup.png';
+const q1xLockup = '/assets/portfolio/document_cover_logo_lockup.svg';
 import styles from './profile.module.css';
 
 export const Profile = ({ id, visible, sectionRef }) => {

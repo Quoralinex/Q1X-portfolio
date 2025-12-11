@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b35d7b933b08c522b10c5d9daace8eebd27c93260c78fa1c5bc7e0fa4e0a382d
-size 1269
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1f3b70"/>
+      <stop offset="100%" stop-color="#12324e"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="200" fill="url(#bg)"/>
+  <rect x="16" y="16" width="368" height="168" fill="none" stroke="#c8dcff" stroke-width="6" rx="12"/>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#e6f0ff" font-family="Arial, sans-serif" font-size="24">CPMS Placeholder Logo</text>
+</svg>
