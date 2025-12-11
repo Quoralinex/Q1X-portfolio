@@ -6,15 +6,22 @@ import { tokens } from '~/components/theme-provider/theme';
 import { Transition } from '~/components/transition';
 import { VisuallyHidden } from '~/components/visually-hidden';
 import { Link as RouterLink } from '@remix-run/react';
+import { Suspense, lazy } from 'react';
 import { useScrollToHash } from '~/hooks';
+import { useHydrated } from '~/hooks/useHydrated';
 import { cssProps } from '~/utils/style';
 import config from '~/config.json';
 import styles from './intro.module.css';
+
+const DisplacementSphere = lazy(() =>
+  import('./displacement-sphere').then(module => ({ default: module.DisplacementSphere }))
+);
 
 export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
   const { theme } = useTheme();
   const titleId = `${id}-title`;
   const scrollToHash = useScrollToHash();
+  const isHydrated = useHydrated();
   const heroTitle = config.role || 'Building next-generation infrastructure and protective systems';
 
   const handleScrollClick = event => {
@@ -35,6 +42,13 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
       <Transition in key={theme} timeout={3000}>
         {({ visible, status }) => (
           <>
+            <div className={styles.background} aria-hidden>
+              {isHydrated && (
+                <Suspense>
+                  <DisplacementSphere />
+                </Suspense>
+              )}
+            </div>
             <header className={styles.text}>
               <Heading level={0} as="h2" className={styles.title} id={titleId}>
                 <VisuallyHidden className={styles.label}>
