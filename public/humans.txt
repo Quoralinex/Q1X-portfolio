@@ -8,14 +8,14 @@ and graphic assets behind this site humanstxt.org.
 
 _______________________________________________________________________________
 
-GROUP | グループ
+GROUP
 
 Quoralinex (Q1X) Group
 Protective systems, AquaCore Technologies, CPMS, Equitable Journeys
 
 _______________________________________________________________________________
 
-TECHNOLOGY | テクノロジー
+TECHNOLOGY
 
 Remix
 Three.js
@@ -23,7 +23,7 @@ Framer Motion
 
 _______________________________________________________________________________
 
-FONTS | フォント
+FONTS
 
 Gotham
 IPA Gothic Regular

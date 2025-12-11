@@ -1,13 +1,3 @@
-import hardlineHelmet from '~/assets/hardline-sentinel-x-helmet.png';
-import hardlineLogo from '~/assets/hardline-logo.png';
-import ejHeader from '~/assets/ej-header-logo-1024x256.png';
-import aquacoreDroplet from '~/assets/aquacore-logo-droplet.png';
-import aquacoreMolecule from '~/assets/aquacore-logo-molecule.png';
-import aquacoreCell from '~/assets/aquacore-quantum-water-cell.png';
-import aquacoreTurbines from '~/assets/aquacore-underwater-turbines.png';
-import aquacoreBatteryChart from '~/assets/aquacore-water-battery-chart.png';
-import cpmsLogo from '~/assets/cpms-logo-horizontal.svg';
-import q1xLockup from '~/assets/document_cover_logo_lockup.png';
 import { Footer } from '~/components/footer';
 import { baseMeta } from '~/utils/meta';
 import { Intro } from './intro';
@@ -16,6 +6,8 @@ import { ProjectSummary } from './project-summary';
 import { useEffect, useRef, useState } from 'react';
 import config from '~/config.json';
 import styles from './home.module.css';
+
+const portfolioAsset = fileName => `/assets/portfolio/${fileName}`;
 
 // Prefetch draco decoader wasm
 export const links = () => {
@@ -112,8 +104,9 @@ export const Home = () => {
             type: 'image',
             alt: 'Equitable Journeys logo and interface header',
             image: {
-              srcSet: `${ejHeader} 1024w, ${ejHeader} 2048w`,
-              placeholder: ejHeader,
+              src: portfolioAsset('ej-header-logo-1024x256.png'),
+              srcSet: `${portfolioAsset('ej-header-logo-1024x256.png')} 1024w, ${portfolioAsset('ej-header-logo-1024x256.png')} 2048w`,
+              placeholder: portfolioAsset('ej-header-logo-1024x256.png'),
               width: 1024,
               height: 256,
             },
@@ -133,13 +126,14 @@ export const Home = () => {
             type: 'image',
             alt: 'Sentinel-X ballistic helmet concept with ALON visor and modular side module',
             image: {
-              srcSet: `${hardlineHelmet} 1400w, ${hardlineHelmet} 2400w`,
-              placeholder: hardlineHelmet,
+              src: portfolioAsset('hardline-sentinel-x-helmet.png'),
+              srcSet: `${portfolioAsset('hardline-sentinel-x-helmet.png')} 1400w, ${portfolioAsset('hardline-sentinel-x-helmet.png')} 2400w`,
+              placeholder: portfolioAsset('hardline-sentinel-x-helmet.png'),
               width: 1600,
               height: 1600,
             },
             badge: {
-              src: hardlineLogo,
+              src: portfolioAsset('hardline-logo.png'),
               alt: 'Hardline logo',
             },
           }}
@@ -157,37 +151,42 @@ export const Home = () => {
             type: 'gallery',
             alt: 'AquaCore subsea turbines and research graphics',
             primary: {
-              srcSet: `${aquacoreTurbines} 1600w, ${aquacoreTurbines} 2400w`,
-              placeholder: aquacoreTurbines,
+              src: portfolioAsset('aquacore-underwater-turbines.png'),
+              srcSet: `${portfolioAsset('aquacore-underwater-turbines.png')} 1600w, ${portfolioAsset('aquacore-underwater-turbines.png')} 2400w`,
+              placeholder: portfolioAsset('aquacore-underwater-turbines.png'),
               width: 2000,
               height: 1125,
               alt: 'Underwater turbine array concept for tidal or current-based power',
             },
             gallery: [
               {
-                srcSet: `${aquacoreMolecule} 800w, ${aquacoreMolecule} 1600w`,
-                placeholder: aquacoreMolecule,
+                src: portfolioAsset('aquacore-logo-molecule.png'),
+                srcSet: `${portfolioAsset('aquacore-logo-molecule.png')} 800w, ${portfolioAsset('aquacore-logo-molecule.png')} 1600w`,
+                placeholder: portfolioAsset('aquacore-logo-molecule.png'),
                 width: 1200,
                 height: 1200,
                 alt: 'AquaCore molecule brand lockup',
               },
               {
-                srcSet: `${aquacoreCell} 800w, ${aquacoreCell} 1600w`,
-                placeholder: aquacoreCell,
+                src: portfolioAsset('aquacore-quantum-water-cell.png'),
+                srcSet: `${portfolioAsset('aquacore-quantum-water-cell.png')} 800w, ${portfolioAsset('aquacore-quantum-water-cell.png')} 1600w`,
+                placeholder: portfolioAsset('aquacore-quantum-water-cell.png'),
                 width: 1200,
                 height: 1200,
                 alt: 'Diagram of a quantum water memory cell with encapsulated water layer',
               },
               {
-                srcSet: `${aquacoreBatteryChart} 800w, ${aquacoreBatteryChart} 1600w`,
-                placeholder: aquacoreBatteryChart,
+                src: portfolioAsset('aquacore-water-battery-chart.png'),
+                srcSet: `${portfolioAsset('aquacore-water-battery-chart.png')} 800w, ${portfolioAsset('aquacore-water-battery-chart.png')} 1600w`,
+                placeholder: portfolioAsset('aquacore-water-battery-chart.png'),
                 width: 1200,
                 height: 1200,
                 alt: 'Comparison chart of water-based battery versus lithium-ion and solid-state batteries',
               },
               {
-                srcSet: `${aquacoreDroplet} 800w, ${aquacoreDroplet} 1600w`,
-                placeholder: aquacoreDroplet,
+                src: portfolioAsset('aquacore-logo-droplet.png'),
+                srcSet: `${portfolioAsset('aquacore-logo-droplet.png')} 800w, ${portfolioAsset('aquacore-logo-droplet.png')} 1600w`,
+                placeholder: portfolioAsset('aquacore-logo-droplet.png'),
                 width: 1200,
                 height: 1200,
                 alt: 'AquaCore droplet logo',
@@ -211,16 +210,18 @@ export const Home = () => {
             type: 'gallery',
             alt: 'CPMS logo representing Quoralinex contract and project management suite',
             primary: {
-              srcSet: `${cpmsLogo} 1200w, ${cpmsLogo} 1800w`,
-              placeholder: cpmsLogo,
+              src: portfolioAsset('cpms-logo-horizontal.svg'),
+              srcSet: `${portfolioAsset('cpms-logo-horizontal.svg')} 1200w, ${portfolioAsset('cpms-logo-horizontal.svg')} 1800w`,
+              placeholder: portfolioAsset('cpms-logo-horizontal.svg'),
               width: 1600,
               height: 480,
               alt: 'CPMS logo representing Quoralinex contract and project management suite',
             },
             gallery: [
               {
-                srcSet: `${q1xLockup} 1200w, ${q1xLockup} 1800w`,
-                placeholder: q1xLockup,
+                src: portfolioAsset('document_cover_logo_lockup.png'),
+                srcSet: `${portfolioAsset('document_cover_logo_lockup.png')} 1200w, ${portfolioAsset('document_cover_logo_lockup.png')} 1800w`,
+                placeholder: portfolioAsset('document_cover_logo_lockup.png'),
                 width: 1600,
                 height: 900,
                 alt: 'Quoralinex group lockup',
