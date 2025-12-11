@@ -1,23 +1,12 @@
 import { Button } from '~/components/button';
-import { Divider } from '~/components/divider';
 import { Heading } from '~/components/heading';
-import { deviceModels } from '~/components/model/device-models';
 import { Image } from '~/components/image';
 import { Section } from '~/components/section';
 import { Text } from '~/components/text';
-import { useTheme } from '~/components/theme-provider';
 import { Transition } from '~/components/transition';
-import { Loader } from '~/components/loader';
-import { useWindowSize } from '~/hooks';
-import { Suspense, lazy, useState } from 'react';
-import { cssProps, media } from '~/utils/style';
-import { useHydrated } from '~/hooks/useHydrated';
-import katakana from './katakana.svg';
+import { useState } from 'react';
+import { media } from '~/utils/style';
 import styles from './project-summary.module.css';
-
-const Model = lazy(() =>
-  import('~/components/model').then(module => ({ default: module.Model }))
-);
 
 export function ProjectSummary({
   id,
@@ -33,52 +22,15 @@ export function ProjectSummary({
   ...rest
 }) {
   const [focused, setFocused] = useState(false);
-  const isDeviceModel = model.type === 'laptop' || model.type === 'phone';
-  const [modelLoaded, setModelLoaded] = useState(!isDeviceModel);
-  const { theme } = useTheme();
-  const { width } = useWindowSize();
-  const isHydrated = useHydrated();
   const titleId = `${id}-title`;
-  const isMobile = width <= media.tablet;
-  const svgOpacity = theme === 'light' ? 0.7 : 1;
   const indexText = index < 10 ? `0${index}` : index;
-  const phoneSizes = `(max-width: ${media.tablet}px) 30vw, 20vw`;
-  const laptopSizes = `(max-width: ${media.tablet}px) 80vw, 40vw`;
-
-  function handleModelLoad() {
-    setModelLoaded(true);
-  }
-
-  function renderKatakana(device, visible) {
-    return (
-      <svg
-        type="project"
-        data-visible={visible && modelLoaded}
-        data-light={theme === 'light'}
-        style={cssProps({ opacity: svgOpacity })}
-        className={styles.svg}
-        data-device={device}
-        viewBox="0 0 751 136"
-      >
-        <use href={`${katakana}#katakana-project`} />
-      </svg>
-    );
-  }
 
   function renderDetails(visible) {
     return (
       <div className={styles.details}>
-        <div aria-hidden className={styles.index}>
-          <Divider
-            notchWidth="64px"
-            notchHeight="8px"
-            collapsed={!visible}
-            collapseDelay={1000}
-          />
-          <span className={styles.indexNumber} data-visible={visible}>
-            {indexText}
-          </span>
-        </div>
+        <span className={styles.indexNumber} aria-hidden data-visible={visible}>
+          {indexText}
+        </span>
         <Heading
           level={3}
           as="h2"
@@ -103,75 +55,6 @@ export function ProjectSummary({
   function renderPreview(visible) {
     return (
       <div className={styles.preview}>
-        {model.type === 'laptop' && (
-          <>
-            {renderKatakana('laptop', visible)}
-            <div className={styles.model} data-device="laptop">
-              {!modelLoaded && (
-                <Loader center className={styles.loader} data-visible={visible} />
-              )}
-              {isHydrated && visible && (
-                <Suspense>
-                  <Model
-                    alt={model.alt}
-                    cameraPosition={{ x: 0, y: 0, z: 8 }}
-                    showDelay={700}
-                    onLoad={handleModelLoad}
-                    show={visible}
-                    models={[
-                      {
-                        ...deviceModels.laptop,
-                        texture: {
-                          ...model.textures[0],
-                          sizes: laptopSizes,
-                        },
-                      },
-                    ]}
-                  />
-                </Suspense>
-              )}
-            </div>
-          </>
-        )}
-        {model.type === 'phone' && (
-          <>
-            {renderKatakana('phone', visible)}
-            <div className={styles.model} data-device="phone">
-              {!modelLoaded && (
-                <Loader center className={styles.loader} data-visible={visible} />
-              )}
-              {isHydrated && visible && (
-                <Suspense>
-                  <Model
-                    alt={model.alt}
-                    cameraPosition={{ x: 0, y: 0, z: 11.5 }}
-                    showDelay={300}
-                    onLoad={handleModelLoad}
-                    show={visible}
-                    models={[
-                      {
-                        ...deviceModels.phone,
-                        position: { x: -0.6, y: 1.1, z: 0 },
-                        texture: {
-                          ...model.textures[0],
-                          sizes: phoneSizes,
-                        },
-                      },
-                      {
-                        ...deviceModels.phone,
-                        position: { x: 0.6, y: -0.5, z: 0.3 },
-                        texture: {
-                          ...model.textures[1],
-                          sizes: phoneSizes,
-                        },
-                      },
-                    ]}
-                  />
-                </Suspense>
-              )}
-            </div>
-          </>
-        )}
         {model.type === 'image' && renderImageContent(visible)}
         {model.type === 'gallery' && renderGallery(visible)}
       </div>
@@ -188,8 +71,8 @@ export function ProjectSummary({
 
     return (
       <div className={styles.previewImage} data-visible={visible}>
-        {renderKatakana('image', visible)}
         <Image
+          className={styles.portfolioCard}
           reveal
           delay={100}
           placeholder={placeholder}
@@ -219,8 +102,8 @@ export function ProjectSummary({
 
     return (
       <div className={styles.previewImage} data-visible={visible}>
-        {renderKatakana('image', visible)}
         <Image
+          className={styles.portfolioCard}
           reveal
           delay={100}
           placeholder={placeholder}
@@ -262,7 +145,6 @@ export function ProjectSummary({
     <Section
       className={styles.summary}
       data-alternate={alternate}
-      data-first={index === 1}
       onFocus={() => setFocused(true)}
       onBlur={() => setFocused(false)}
       as="section"
@@ -272,22 +154,12 @@ export function ProjectSummary({
       tabIndex={-1}
       {...rest}
     >
-      <div className={styles.content}>
+      <div className={styles.content} data-alternate={alternate}>
         <Transition in={sectionVisible || focused}>
           {({ visible }) => (
             <>
-              {!alternate && !isMobile && (
-                <>
-                  {renderDetails(visible)}
-                  {renderPreview(visible)}
-                </>
-              )}
-              {(alternate || isMobile) && (
-                <>
-                  {renderPreview(visible)}
-                  {renderDetails(visible)}
-                </>
-              )}
+              <div className={styles.textColumn}>{renderDetails(visible)}</div>
+              <div className={styles.mediaColumn}>{renderPreview(visible)}</div>
             </>
           )}
         </Transition>

@@ -7,6 +7,11 @@ export const navLinks = [
     label: 'About',
     pathname: '/#details',
   },
+  {
+    label: 'Contact',
+    pathname: 'mailto:info@quoralinex.com',
+    external: true,
+  },
 ];
 
 export const socialLinks = [
