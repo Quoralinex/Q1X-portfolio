@@ -95,6 +95,31 @@
   }
 }
 
+.intro {
+  margin-bottom: var(--space2XL);
+  color: var(--textLight);
+  transition-property: opacity;
+  transition-timing-function: var(--bezierFastoutSlowin);
+  transition-duration: var(--durationXL);
+  transition-delay: var(--delay);
+  opacity: 0;
+
+  @media (--mediaUseMotion) {
+    transition-property: transform, opacity;
+    transform: translate3d(0, var(--spaceL), 0);
+  }
+
+  &[data-status='entering'],
+  &[data-status='entered'] {
+    transform: none;
+    opacity: 1;
+  }
+
+  &[data-status='exited'] {
+    display: none;
+  }
+}
+
 .input {
   transition-property: opacity;
   transition-timing-function: var(--bezierFastoutSlowin);

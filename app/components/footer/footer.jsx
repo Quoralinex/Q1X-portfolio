@@ -9,5 +9,8 @@ export const Footer = ({ className }) => (
         © 2025 Quoralinex (Q1X) Group. All rights reserved.
       </span>
     </Text>
+    <Text size="s" align="center" className={styles.tagline}>
+      Part of an ongoing portfolio of products and research projects.
+    </Text>
   </footer>
 );

@@ -1,38 +1,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://hamishw.com/</loc>
+    <loc>https://q1x-portfolio-admin.q1x.xyz/</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://hamishw.com/contact/</loc>
+    <loc>https://q1x-portfolio-admin.q1x.xyz/contact/</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://hamishw.com/articles/</loc>
+    <loc>https://q1x-portfolio-admin.q1x.xyz/consultancy/</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://hamishw.com/uses/</loc>
+    <loc>https://q1x-portfolio-admin.q1x.xyz/cpms/</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://hamishw.com/projects/slice/</loc>
+    <loc>https://q1x-portfolio-admin.q1x.xyz/articles/</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://hamishw.com/projects/smart-sparrow/</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://hamishw.com/projects/volkihar-knight/</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://hamishw.com/articles/hello-world</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://hamishw.com/articles/modern-styling-in-react</loc>
+    <loc>https://q1x-portfolio-admin.q1x.xyz/uses/</loc>
     <changefreq>monthly</changefreq>
   </url>
 </urlset>

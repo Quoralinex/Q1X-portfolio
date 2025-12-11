@@ -154,27 +154,41 @@ export const Navbar = () => {
       <NavToggle onClick={() => setMenuOpen(!menuOpen)} menuOpen={menuOpen} />
       <nav className={styles.nav}>
         <div className={styles.navList}>
-          {navLinks.map(({ label, pathname, external }) =>
-            external ? (
-              <a
-                key={label}
-                href={pathname}
-                data-navbar-item
-                className={styles.navLink}
-                aria-label={label}
-              >
-                {label}
-              </a>
-            ) : (
+          {navLinks.map(({ label, href }) => (
+            <RouterLink
+              unstable_viewTransition
+              prefetch="intent"
+              to={href}
+              key={label}
+              data-navbar-item
+              className={styles.navLink}
+              aria-current={getCurrent(href)}
+              onClick={handleNavItemClick}
+            >
+              {label}
+            </RouterLink>
+          ))}
+        </div>
+        <NavbarIcons desktop />
+      </nav>
+      <Transition unmount in={menuOpen} timeout={msToNum(tokens.base.durationL)}>
+        {({ visible, nodeRef }) => (
+          <nav className={styles.mobileNav} data-visible={visible} ref={nodeRef}>
+            {navLinks.map(({ label, href }, index) => (
               <RouterLink
                 unstable_viewTransition
                 prefetch="intent"
-                to={pathname}
+                to={href}
                 key={label}
-                data-navbar-item
-                className={styles.navLink}
-                aria-current={getCurrent(pathname)}
-                onClick={handleNavItemClick}
+                className={styles.mobileNavLink}
+                data-visible={visible}
+                aria-current={getCurrent(href)}
+                onClick={handleMobileNavClick}
+                style={cssProps({
+                  transitionDelay: numToMs(
+                    Number(msToNum(tokens.base.durationS)) + index * 50
+                  ),
+                })}
               >
                 {label}
               </RouterLink>

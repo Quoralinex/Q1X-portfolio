@@ -1,11 +1,23 @@
 export const navLinks = [
   {
     label: 'Portfolio',
-    pathname: '/#equitable-journeys',
+    href: '/#portfolio',
+  },
+  {
+    label: 'Consultancy',
+    href: '/consultancy',
+  },
+  {
+    label: 'CPMS',
+    href: '/cpms',
   },
   {
     label: 'About',
-    pathname: '/#details',
+    href: '/#about',
+  },
+  {
+    label: 'Contact',
+    href: '/contact',
   },
   {
     label: 'Contact',

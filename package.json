@@ -1,7 +1,7 @@
 {
-  "name": "portfolio",
-  "homepage": "https://quoralinex.com",
-  "description": "Quoralinex (Q1X) Group portfolio landing page",
+  "name": "q1x-portfolio",
+  "homepage": "https://q1x-portfolio-admin.q1x.xyz",
+  "description": "Portfolio site for Quoralinex (Q1X) products and research.",
   "repository": "https://github.com/Quoralinex/Q1X-portfolio.git",
   "author": "Quoralinex (Q1X) Group",
   "sideEffects": false,

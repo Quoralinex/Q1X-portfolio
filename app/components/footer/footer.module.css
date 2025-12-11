@@ -21,4 +21,10 @@
     padding-right: var(--spaceXS);
     display: inline-flex;
   }
+
+  .tagline {
+    width: 100%;
+    margin-top: var(--spaceS);
+    color: var(--textLight);
+  }
 }
