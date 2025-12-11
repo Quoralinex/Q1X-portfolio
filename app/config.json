@@ -1,11 +1,15 @@
 {
-  "name": "Hamish Williams",
-  "role": "Designer",
-  "disciplines": ["Developer", "Prototyper", "Animator", "Illustrator", "Modder"],
-  "url": "https://hamishw.com",
-  "bluesky": "hamishw.com",
-  "figma": "@Hamish",
-  "github": "HamishMW",
-  "repo": "https://github.com/HamishMW/portfolio",
-  "ascii": "__  __  __\n\u005C \u005C \u005C \u005C \u005C\u2215\n \u005C \u005C\u2215\u005C \u005C\n  \u005C\u2215  \u005C\u2215\n"
+  "name": "Quoralinex (Q1X) Group",
+  "role": "Infrastructure & Protective Systems",
+  "disciplines": [
+    "Water-based energy storage",
+    "Protective equipment",
+    "Contract platforms"
+  ],
+  "url": "https://quoralinex.com",
+  "bluesky": "",
+  "figma": "",
+  "github": "",
+  "repo": "https://github.com/Quoralinex/Q1X-portfolio",
+  "ascii": "____   ____ __  ____\n\\ \ \ / / //_/ / __\\n \\ \ V / ,<  / /_/ /\n  \\_/|_/_/|_|\\____/\n"
 }
