@@ -8,6 +8,7 @@
   pointer-events: none;
   z-index: var(--zIndex0);
   opacity: 0;
+  pointer-events: none;
   transition-property: opacity;
   transition-duration: 3s;
   transition-timing-function: var(--bezierFastoutSlowin);

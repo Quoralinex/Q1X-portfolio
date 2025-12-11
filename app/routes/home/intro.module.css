@@ -36,8 +36,10 @@
 
 .titleText {
   display: block;
-  line-height: 1.15;
+  line-height: 1.08;
   color: var(--textTitle);
+  font-size: clamp(2.6rem, 5vw, 4.75rem);
+  letter-spacing: -0.02em;
   transition-property: opacity, transform;
   transition-duration: var(--durationXL);
   transition-timing-function: var(--bezierFastoutSlowin);
@@ -73,7 +75,7 @@
 }
 
 .actions {
-  margin-top: var(--spaceL);
+  margin-top: var(--spaceS);
   opacity: 0;
   transition-property: opacity, transform;
   transition-duration: var(--durationXL);
@@ -114,6 +116,10 @@
   transition-duration: var(--durationL);
   transition-timing-function: ease;
   opacity: 0;
+
+  @media (--mediaLaptop) {
+    bottom: 48px;
+  }
 
   &::before {
     content: '';
