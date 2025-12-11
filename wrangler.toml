@@ -1,4 +1,7 @@
 name = "q1x-portfolio"
+main = "functions/[[path]].js"
 compatibility_date = "2024-05-01"
 
-pages_build_output_dir = "build/client"
+[assets]
+bucket = "./build/client"
+binding = "ASSETS"
