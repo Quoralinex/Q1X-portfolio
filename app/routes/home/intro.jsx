@@ -8,9 +8,10 @@ import { VisuallyHidden } from '~/components/visually-hidden';
 import { Link as RouterLink } from '@remix-run/react';
 import { Suspense, lazy } from 'react';
 import { useScrollToHash } from '~/hooks';
-import { useHydrated } from '~/hooks/useHydrated';
+import { Suspense, lazy } from 'react';
 import { cssProps } from '~/utils/style';
 import config from '~/config.json';
+import { useHydrated } from '~/hooks/useHydrated';
 import styles from './intro.module.css';
 
 const DisplacementSphere = lazy(() =>
@@ -42,13 +43,11 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
       <Transition in key={theme} timeout={3000}>
         {({ visible, status }) => (
           <>
-            <div className={styles.background} aria-hidden>
-              {isHydrated && (
-                <Suspense>
-                  <DisplacementSphere />
-                </Suspense>
-              )}
-            </div>
+            {isHydrated && (
+              <Suspense>
+                <DisplacementSphere />
+              </Suspense>
+            )}
             <header className={styles.text}>
               <Heading level={0} as="h2" className={styles.title} id={titleId}>
                 <VisuallyHidden className={styles.label}>

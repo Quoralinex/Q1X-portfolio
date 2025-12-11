@@ -1,12 +1,29 @@
 .canvas {
   position: absolute;
-  width: 100vw;
-  inset: 0;
+  top: clamp(-10rem, -12vh, -2rem);
+  right: clamp(-14rem, -10vw, -4rem);
+  width: min(80vw, 1100px);
+  height: auto;
+  max-height: 120vh;
+  pointer-events: none;
+  z-index: var(--zIndex0);
   opacity: 0;
   pointer-events: none;
   transition-property: opacity;
   transition-duration: 3s;
   transition-timing-function: var(--bezierFastoutSlowin);
+
+  @media (--mediaTablet) {
+    top: clamp(-8rem, -10vh, -1rem);
+    right: clamp(-10rem, -8vw, -3rem);
+    width: min(95vw, 960px);
+  }
+
+  @media (--mediaMobile) {
+    right: clamp(-8rem, -10vw, -2rem);
+    top: clamp(-6rem, -8vh, -1rem);
+    width: min(120vw, 860px);
+  }
 
   &[data-visible='true'] {
     opacity: 1;
