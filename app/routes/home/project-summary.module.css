@@ -1,5 +1,5 @@
 .summary {
-  padding: 6rem 0;
+  padding: clamp(4rem, 6vw, 6rem) 0;
 }
 
 .content {
@@ -7,8 +7,8 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-  gap: 3rem;
-  align-items: center;
+  gap: clamp(2.5rem, 5vw, 3.5rem);
+  align-items: start;
 }
 
 .content[data-alternate='true'] {
@@ -66,6 +66,33 @@
   }
 }
 
+.buttonGroup {
+  transition-property: opacity;
+  transition-timing-function: var(--bezierFastoutSlowin);
+  transition-duration: var(--durationXL);
+  transition-delay: var(--durationXL);
+  transform: translate3d(0, var(--spaceL), 0);
+  opacity: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spaceM);
+
+  @media (--mediaUseMotion) {
+    transition-property: transform, opacity;
+    transform: translate3d(0, var(--spaceL), 0);
+  }
+
+  &[data-visible='true'] {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.secondaryButton {
+  --button-bg: transparent;
+}
+
 .preview {
   display: grid;
   gap: var(--spaceL);
@@ -73,10 +100,12 @@
 
 .previewImage {
   width: 100%;
+  max-width: 720px;
   display: grid;
   gap: var(--spaceL);
   justify-items: center;
   position: relative;
+  justify-self: center;
   opacity: 0;
   transform: translate3d(0, var(--spaceL), 0);
   transition-property: opacity, transform;
@@ -104,6 +133,12 @@
     height: auto;
     display: block;
   }
+
+  @media (max-width: 900px) {
+    img {
+      width: 120px;
+    }
+  }
 }
 
 .portfolioCard {
@@ -126,38 +161,29 @@
   overflow: hidden;
 }
 
+@media (max-width: 1100px) {
+  .content,
+  .content[data-alternate='true'] {
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 900px) {
   .content,
   .content[data-alternate='true'] {
     grid-template-columns: minmax(0, 1fr);
+    gap: var(--spaceXL);
   }
 
   .textColumn {
     order: 2;
   }
 
-.buttonGroup {
-  transition-property: opacity;
-  transition-timing-function: var(--bezierFastoutSlowin);
-  transition-duration: var(--durationXL);
-  transition-delay: var(--durationXL);
-  transform: translate3d(0, var(--spaceL), 0);
-  opacity: 0;
-  display: flex;
-  align-items: center;
-  gap: var(--spaceM);
-
-  @media (--mediaUseMotion) {
-    transition-property: transform, opacity;
-    transform: translate3d(0, var(--spaceL), 0);
+  .mediaColumn {
+    order: 1;
   }
 
-  &[data-visible='true'] {
-    transform: none;
-    opacity: 1;
+  .previewImage {
+    max-width: none;
   }
-}
-
-.secondaryButton {
-  --button-bg: transparent;
 }
