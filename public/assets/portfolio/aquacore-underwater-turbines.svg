@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+  <title id="title">AquaCore Underwater Turbines Placeholder</title>
+  <desc id="desc">Illustrative gradient card for AquaCore underwater turbine concept art</desc>
+  <defs>
+    <linearGradient id="grad-turbines" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#083344" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#14b8a6" />
+    </linearGradient>
+    <radialGradient id="halo" cx="50%" cy="45%" r="45%">
+      <stop offset="0%" stop-color="#5eead4" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#14b8a6" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="1400" height="900" rx="56" fill="url(#grad-turbines)" />
+  <rect x="70" y="70" width="1260" height="760" rx="48" fill="rgba(255,255,255,0.06)" stroke="#5eead4" stroke-width="4" />
+  <ellipse cx="700" cy="430" rx="520" ry="260" fill="url(#halo)" />
+  <g fill="none" stroke="#a5f3fc" stroke-width="10" stroke-linecap="round">
+    <path d="M320 460 Q700 260 1080 460" />
+    <path d="M380 520 Q700 330 1020 520" opacity="0.6" />
+    <path d="M440 580 Q700 400 960 580" opacity="0.35" />
+  </g>
+  <text x="50%" y="690" text-anchor="middle" fill="#e0f2fe" font-family="'Inter', 'Segoe UI', sans-serif" font-size="60" font-weight="700" letter-spacing="1.2">
+    AquaCore Underwater Turbines
+  </text>
+</svg>

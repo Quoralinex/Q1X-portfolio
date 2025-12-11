@@ -1,26 +1,26 @@
 export const navLinks = [
   {
     label: 'Portfolio',
-    href: '/#portfolio',
+    pathname: '/#portfolio',
   },
   {
     label: 'Consultancy',
-    href: '/consultancy',
+    pathname: '/consultancy',
   },
   {
     label: 'CPMS',
-    href: '/cpms',
+    pathname: '/cpms',
   },
   {
     label: 'About',
-    href: '/#about',
+    pathname: '/#about',
   },
   {
     label: 'Contact',
-    href: '/contact',
+    pathname: '/contact',
   },
   {
-    label: 'Contact',
+    label: 'Email',
     pathname: 'mailto:info@quoralinex.com',
     external: true,
   },

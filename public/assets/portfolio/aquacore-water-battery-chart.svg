@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" role="img" aria-labelledby="title desc">
+  <title id="title">AquaCore Water Battery Chart Placeholder</title>
+  <desc id="desc">Stylized bar chart graphic for AquaCore water battery data</desc>
+  <defs>
+    <linearGradient id="grad-chart" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0ea5e9" />
+      <stop offset="100%" stop-color="#22d3ee" />
+    </linearGradient>
+    <linearGradient id="bg-chart" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="700" rx="42" fill="url(#bg-chart)" />
+  <rect x="60" y="80" width="880" height="520" rx="28" fill="rgba(255,255,255,0.05)" stroke="#67e8f9" stroke-width="3" />
+  <g fill="url(#grad-chart)">
+    <rect x="140" y="260" width="80" height="300" rx="12" />
+    <rect x="280" y="210" width="80" height="350" rx="12" opacity="0.9" />
+    <rect x="420" y="170" width="80" height="390" rx="12" opacity="0.8" />
+    <rect x="560" y="220" width="80" height="340" rx="12" opacity="0.7" />
+    <rect x="700" y="250" width="80" height="310" rx="12" opacity="0.6" />
+  </g>
+  <g stroke="#38bdf8" stroke-width="2" opacity="0.4">
+    <path d="M120 240 H880" />
+    <path d="M120 300 H880" />
+    <path d="M120 360 H880" />
+    <path d="M120 420 H880" />
+    <path d="M120 480 H880" />
+  </g>
+  <text x="50%" y="640" text-anchor="middle" fill="#e0f2fe" font-family="'Inter', 'Segoe UI', sans-serif" font-size="44" font-weight="700" letter-spacing="1">
+    AquaCore Water Battery
+  </text>
+</svg>

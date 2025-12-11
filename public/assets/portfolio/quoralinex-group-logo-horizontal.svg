@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3a02b9deddf2e5851ca752f963c7648d2f6f5d6a27d7d7327528c67fb85adca9
-size 1577
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10314f"/>
+      <stop offset="100%" stop-color="#0b2338"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="200" fill="url(#bg)"/>
+  <rect x="16" y="16" width="368" height="168" fill="none" stroke="#b1d4ff" stroke-width="6" rx="12"/>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#e0f2ff" font-family="Arial, sans-serif" font-size="24">Quoralinex Group Logo</text>
+</svg>
