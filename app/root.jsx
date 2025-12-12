@@ -41,7 +41,10 @@ export const links = () => [
   { rel: 'manifest', href: '/manifest.json' },
   { rel: 'icon', href: '/favicon.ico' },
   { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
-  { rel: 'shortcut_icon', href: '/shortcut.png', type: 'image/png', sizes: '64x64' },
+  { rel: 'icon', href: '/q1x_favicon_32x32.png', type: 'image/png', sizes: '32x32' },
+  { rel: 'icon', href: '/q1x_favicon_16x16.png', type: 'image/png', sizes: '16x16' },
+  { rel: 'shortcut icon', href: '/shortcut.png', type: 'image/png', sizes: '64x64' },
+  { rel: 'apple-touch-icon', href: '/q1x_favicon_180x180.png', sizes: '180x180' },
   { rel: 'apple-touch-icon', href: '/icon-256.png', sizes: '256x256' },
   { rel: 'author', href: '/humans.txt', type: 'text/plain' },
 ];

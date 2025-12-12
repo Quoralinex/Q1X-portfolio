@@ -11,6 +11,11 @@ import { ThemeToggle } from './theme-toggle';
 import { navLinks, socialLinks } from './nav-data';
 import config from '~/config.json';
 import styles from './navbar.module.css';
+import WordmarkGradientSmall from '~/assets/quoralinex_wordmark_gradient_transparent_200w.png';
+import WordmarkGradient from '~/assets/quoralinex_wordmark_gradient_transparent_400w.png';
+import WordmarkGradientLarge from '~/assets/quoralinex_wordmark_gradient_transparent_1024w.png';
+import WordmarkGradientXLarge from '~/assets/quoralinex_wordmark_gradient_transparent_2048w.png';
+import WordmarkLight from '~/assets/quoralinex_wordmark_mono_black_on_white.png';
 
 export const Navbar = () => {
   const [current, setCurrent] = useState();
@@ -22,6 +27,20 @@ export const Navbar = () => {
   const headerRef = useRef();
   const isMobile = windowSize.width <= media.mobile || windowSize.height <= 696;
   const scrollToHash = useScrollToHash();
+
+  const logos = {
+    dark: {
+      src: WordmarkGradient,
+      srcSet: `${WordmarkGradientSmall} 200w, ${WordmarkGradient} 400w, ${WordmarkGradientLarge} 1024w, ${WordmarkGradientXLarge} 2048w`,
+      sizes: '(max-width: 1024px) 180px, 220px',
+    },
+    light: {
+      src: WordmarkLight,
+      srcSet: `${WordmarkLight} 400w`,
+      sizes: '200px',
+    },
+  };
+  const logo = theme === 'light' ? logos.light : logos.dark;
 
   useEffect(() => {
     // Prevent ssr mismatch by storing this in state
@@ -149,7 +168,13 @@ export const Navbar = () => {
         aria-label={`${config.name}, ${config.role}`}
         onClick={handleMobileNavClick}
       >
-        <img src="/q1x_master_dark.png" alt="Quoralinex logo" className={styles.logoImage} />
+        <img
+          src={logo.src}
+          srcSet={logo.srcSet}
+          sizes={logo.sizes}
+          alt="Quoralinex logo"
+          className={styles.logoImage}
+        />
         <span className={styles.logoText}>Quoralinex / Q1X</span>
       </RouterLink>
       <NavToggle onClick={() => setMenuOpen(!menuOpen)} menuOpen={menuOpen} />
