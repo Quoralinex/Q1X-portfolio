@@ -5,18 +5,24 @@ import styles from './theme-toggle.module.css';
 
 export const ThemeToggle = ({ isMobile, ...rest }) => {
   const id = useId();
-  const { toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useTheme();
   const maskId = `${id}theme-toggle-mask`;
+  const label = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+  const isDark = theme === 'dark';
 
   return (
     <Button
-      iconOnly
       className={styles.toggle}
       data-mobile={isMobile}
-      aria-label="Toggle theme"
+      aria-label={label}
+      aria-pressed={isDark}
+      data-theme={theme}
       onClick={() => toggleTheme()}
       {...rest}
     >
+      <span className={styles.label} aria-hidden>
+        {isDark ? 'Dark' : 'Light'} mode
+      </span>
       <svg aria-hidden className={styles.svg} width="38" height="38" viewBox="0 0 38 38">
         <defs>
           <mask id={maskId}>

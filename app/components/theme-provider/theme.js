@@ -55,6 +55,12 @@ const baseTokens = {
   zIndex5: 64,
 };
 
+const quoralinexAccent = 'oklch(68.19% 0.202 246.51)';
+const quoralinexAccentBright = 'oklch(78.34% 0.158 246.51)';
+const quoralinexInk = 'oklch(16.4% 0.019 255.68)';
+const quoralinexMidnight = 'oklch(22.5% 0.015 255.68)';
+const quoralinexPaper = 'oklch(96.7% 0.008 255.68)';
+
 // Tokens that change based on viewport size
 const tokensDesktop = {
   fontSizeH0: pxToRem(120),
@@ -108,25 +114,25 @@ const tokensMobileSmall = {
 
 // Tokens that change based on theme
 const dark = {
-  background: 'oklch(17.76% 0 0)',
-  backgroundLight: 'oklch(21.78% 0 0)',
-  primary: 'oklch(84.42% 0.19 202.24)',
-  accent: 'oklch(84.42% 0.19 202.24)',
+  background: quoralinexInk,
+  backgroundLight: quoralinexMidnight,
+  primary: quoralinexAccentBright,
+  accent: quoralinexAccent,
   error: 'oklch(65.91% 0.249 13.76)',
-  text: 'var(--white)',
-  textTitle: 'var(--text)',
-  textBody: 'color-mix(in lab, var(--text) 80%, transparent)',
+  text: 'oklch(97% 0.01 247)',
+  textTitle: 'color-mix(in lab, var(--text) 92%, transparent)',
+  textBody: 'color-mix(in lab, var(--text) 78%, transparent)',
   textLight: 'color-mix(in lab, var(--text) 60%, transparent)',
 };
 
 const light = {
-  background: 'oklch(96.12% 0 0)',
-  backgroundLight: 'var(--white)',
-  primary: 'var(--black)',
-  accent: 'oklch(84.42% 0.19 202.24)',
+  background: quoralinexPaper,
+  backgroundLight: 'oklch(100% 0 0)',
+  primary: quoralinexInk,
+  accent: quoralinexAccent,
   error: 'oklch(63.17% 0.259 25.41)',
-  text: 'var(--black)',
-  textTitle: 'color-mix(in lab, var(--text) 90%, transparent)',
+  text: 'oklch(23% 0.02 255)',
+  textTitle: 'color-mix(in lab, var(--text) 92%, transparent)',
   textBody: 'color-mix(in lab, var(--text) 75%, transparent)',
   textLight: 'color-mix(in lab, var(--text) 55%, transparent)',
 };
