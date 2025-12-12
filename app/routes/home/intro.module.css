@@ -147,6 +147,7 @@
 
   &[data-hidden='true'] {
     opacity: 0;
+    pointer-events: none;
 
     @media (--mediaUseMotion) {
       transform: translate3d(0, 20px, 0);
@@ -198,6 +199,7 @@
   }
 
   &[data-hidden='true'] {
+    pointer-events: none;
     opacity: 0;
     transform: none;
   }

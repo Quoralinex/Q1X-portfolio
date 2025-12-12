@@ -44,18 +44,6 @@
     height: auto;
   }
 
-  .logoText {
-    font-weight: var(--fontWeightMedium);
-    letter-spacing: 0.08em;
-    font-size: calc((12 / 16) * 1rem);
-    color: var(--textBody);
-    text-transform: uppercase;
-
-    @media (--mediaMobile) {
-      display: none;
-    }
-  }
-
   .nav {
     display: flex;
     flex-direction: column;
