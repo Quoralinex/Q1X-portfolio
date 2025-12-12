@@ -1,8 +1,11 @@
-import { Footer } from '~/components/footer';
+import ejHeader from '~/assets/portfolio/ej-header-logo-1024x256.png';
 import { Button } from '~/components/button';
+import { Footer } from '~/components/footer';
+import { List, ListItem } from '~/components/list';
 import {
   ProjectContainer,
   ProjectHeader,
+  ProjectImage,
   ProjectSection,
   ProjectSectionContent,
   ProjectSectionHeading,
@@ -10,13 +13,14 @@ import {
   ProjectTextRow,
 } from '~/layouts/project';
 import { baseMeta } from '~/utils/meta';
+import { media } from '~/utils/style';
+
+const title = 'Equitable Journeys';
+const description =
+  'A not-for-profit platform that pairs learners with relatable routes through education, training, and funding.';
 
 export const meta = () => {
-  return baseMeta({
-    title: 'Equitable Journeys',
-    description:
-      'Equitable Journeys helps learners map qualifications, funding, and study options with relatable pathways.',
-  });
+  return baseMeta({ title, description, prefix: 'Projects' });
 };
 
 export const EquitableJourneys = () => {
@@ -24,18 +28,30 @@ export const EquitableJourneys = () => {
     <>
       <ProjectContainer>
         <ProjectHeader
-          title="Equitable Journeys"
-          description="Platform for guidance on qualifications, funding routes, and study options"
+          title={title}
+          description="Mapping real-world pathways so every learner can access guidance usually reserved for those with private advisers."
         />
+
+        <ProjectSection padding="top">
+          <ProjectSectionContent>
+            <ProjectImage
+              srcSet={`${ejHeader} 1024w, ${ejHeader} 2048w`}
+              width={1024}
+              height={256}
+              placeholder={ejHeader}
+              alt="Equitable Journeys wordmark and UI header"
+              sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 80vw, 720px`}
+            />
+          </ProjectSectionContent>
+        </ProjectSection>
 
         <ProjectSection>
           <ProjectSectionContent>
             <ProjectTextRow>
-              <ProjectSectionHeading>Purpose</ProjectSectionHeading>
-              <ProjectSectionText>
-                Equitable Journeys is a not-for-profit platform that works with councils, youth projects, charities, and employers
-                to map real-world pathways for learners. The goal is to deliver guidance that matches the quality available to those
-                with private advisers.
+              <ProjectSectionHeading>What it does</ProjectSectionHeading>
+              <ProjectSectionText as="div">
+                Equitable Journeys helps learners explore qualifications, apprenticeships, and funding routes with story-driven guidance.
+                We work with councils, charities, and employers to surface local opportunities and show how others have navigated similar choices.
               </ProjectSectionText>
             </ProjectTextRow>
           </ProjectSectionContent>
@@ -44,17 +60,14 @@ export const EquitableJourneys = () => {
         <ProjectSection>
           <ProjectSectionContent>
             <ProjectTextRow>
-              <ProjectSectionHeading>How it works</ProjectSectionHeading>
+              <ProjectSectionHeading>Product focus</ProjectSectionHeading>
               <ProjectSectionText as="div">
-                <p>
-                  Learners explore relatable stories, examples, and pre-recorded coaching to navigate qualifications, funding, and
-                  study choices across the UK and Europe. The platform surfaces pathways that align to each learner&apos;s context and
-                  next steps.
-                </p>
-                <p>
-                  We are building collaborations with local partners to keep the guidance accurate, practical, and grounded in real
-                  opportunities.
-                </p>
+                <List>
+                  <ListItem>Guided pathways that mirror lived experience rather than generic prospectus copy.</ListItem>
+                  <ListItem>Pre-recorded coaching and messaging tools that scale mentoring across cohorts.</ListItem>
+                  <ListItem>Regional data and employer input so advice stays grounded in real vacancies and support.</ListItem>
+                  <ListItem>Safeguarding and privacy controls suitable for council and charity programmes.</ListItem>
+                </List>
               </ProjectSectionText>
             </ProjectTextRow>
           </ProjectSectionContent>
@@ -65,14 +78,11 @@ export const EquitableJourneys = () => {
             <ProjectTextRow>
               <ProjectSectionHeading>Get involved</ProjectSectionHeading>
               <ProjectSectionText as="div">
-                <p>
-                  If you support learners and want to pilot Equitable Journeys in your organisation, reach out for a walkthrough
-                  and partnership options.
-                </p>
-                <Button iconHoverShift href="/contact" iconEnd="arrow-right">
-                  Contact us
-                </Button>
+                We are onboarding councils, youth projects, and community organisations that want to pilot Equitable Journeys with tailored content for their learners.
               </ProjectSectionText>
+              <Button iconHoverShift href="/contact" iconEnd="arrow-right">
+                Talk to us
+              </Button>
             </ProjectTextRow>
           </ProjectSectionContent>
         </ProjectSection>

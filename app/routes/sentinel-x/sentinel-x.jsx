@@ -1,8 +1,12 @@
-import { Footer } from '~/components/footer';
+import sentinelHelmet from '~/assets/portfolio/hardline-sentinel-x-helmet.png';
+import hardlineLogo from '~/assets/portfolio/hardline-logo.png';
 import { Button } from '~/components/button';
+import { Footer } from '~/components/footer';
+import { List, ListItem } from '~/components/list';
 import {
   ProjectContainer,
   ProjectHeader,
+  ProjectImage,
   ProjectSection,
   ProjectSectionContent,
   ProjectSectionHeading,
@@ -10,13 +14,14 @@ import {
   ProjectTextRow,
 } from '~/layouts/project';
 import { baseMeta } from '~/utils/meta';
+import { media } from '~/utils/style';
+
+const title = 'Hardline / Sentinel-X';
+const description =
+  'A modular armour concept that pairs ballistic protection with sensing, comms, and HUD-ready headgear.';
 
 export const meta = () => {
-  return baseMeta({
-    title: 'Hardline / Sentinel-X',
-    description:
-      'Sentinel-X is a modular armour platform combining ballistic protection, integrated sensors, and HUD-ready hardware.',
-  });
+  return baseMeta({ title, description, prefix: 'Projects' });
 };
 
 export const SentinelX = () => {
@@ -24,18 +29,29 @@ export const SentinelX = () => {
     <>
       <ProjectContainer>
         <ProjectHeader
-          title="Hardline / Sentinel-X"
-          description="Flagship protective equipment platform with modular armour and helmet systems"
+          title={title}
+          description="Flagship protective platform combining ALON visors, composite shells, and a modular compute bay for sensors and HUDs."
         />
 
+        <ProjectSection padding="top">
+          <ProjectSectionContent>
+            <ProjectImage
+              srcSet={`${sentinelHelmet} 1400w, ${sentinelHelmet} 2400w`}
+              width={1600}
+              height={1600}
+              placeholder={sentinelHelmet}
+              alt="Sentinel-X helmet with ALON visor and side module"
+              sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 80vw, 720px`}
+            />
+          </ProjectSectionContent>
+        </ProjectSection>
+
         <ProjectSection>
           <ProjectSectionContent>
             <ProjectTextRow>
-              <ProjectSectionHeading>Platform overview</ProjectSectionHeading>
-              <ProjectSectionText>
-                Sentinel-X combines ballistic protection, integrated sensors, and a HUD-ready helmet architecture. The helmet pairs
-                an ALON transparent ceramic visor with a carbon-fibre and Kevlar composite shell, plus a modular side module sized
-                for smartphone-class processors and batteries.
+              <ProjectSectionHeading>Platform goals</ProjectSectionHeading>
+              <ProjectSectionText as="div">
+                Hardline focuses on lightweight, modular armour for defence, VIP protection, critical infrastructure security, and responders who need integrated sensing without sacrificing protection.
               </ProjectSectionText>
             </ProjectTextRow>
           </ProjectSectionContent>
@@ -44,15 +60,14 @@ export const SentinelX = () => {
         <ProjectSection>
           <ProjectSectionContent>
             <ProjectTextRow>
-              <ProjectSectionHeading>Use cases</ProjectSectionHeading>
+              <ProjectSectionHeading>Key elements</ProjectSectionHeading>
               <ProjectSectionText as="div">
-                <p>
-                  The platform roadmap covers defence, VIP protection, critical-infrastructure security, and first responders.
-                  A lightweight family of helmets and body armour will support different threat profiles and operational roles.
-                </p>
-                <p>
-                  Sensor fusion, comms, and power modules are designed to be upgraded without replacing the entire system.
-                </p>
+                <List>
+                  <ListItem>ALON transparent ceramic visors paired with carbon-fibre and Kevlar composite shells.</ListItem>
+                  <ListItem>Modular side bay sized for smartphone-class processors, batteries, and comms stacks.</ListItem>
+                  <ListItem>HUD-ready optics and sensor feeds for situational awareness.</ListItem>
+                  <ListItem>Body armour concepts built from the same material system for family-level compatibility.</ListItem>
+                </List>
               </ProjectSectionText>
             </ProjectTextRow>
           </ProjectSectionContent>
@@ -61,16 +76,27 @@ export const SentinelX = () => {
         <ProjectSection>
           <ProjectSectionContent>
             <ProjectTextRow>
-              <ProjectSectionHeading>Learn more</ProjectSectionHeading>
+              <ProjectSectionHeading>Roadmap</ProjectSectionHeading>
               <ProjectSectionText as="div">
-                <p>
-                  For partnerships or prototyping enquiries about Sentinel-X, contact the team for a technical briefing.
-                </p>
-                <Button iconHoverShift href="/contact" iconEnd="arrow-right">
-                  Contact us
-                </Button>
+                We are refining ergonomics, thermal management, and ballistic performance with partners while developing electronics reference designs that can host tactical radios, compute, and power for future HUD integrations.
               </ProjectSectionText>
+              <Button iconHoverShift href="/contact" iconEnd="arrow-right">
+                Discuss Sentinel-X
+              </Button>
             </ProjectTextRow>
+          </ProjectSectionContent>
+        </ProjectSection>
+
+        <ProjectSection>
+          <ProjectSectionContent>
+            <ProjectImage
+              srcSet={`${hardlineLogo} 512w, ${hardlineLogo} 1024w`}
+              width={1024}
+              height={512}
+              placeholder={hardlineLogo}
+              alt="Hardline badge"
+              sizes={`(max-width: ${media.mobile}px) 80vw, 420px`}
+            />
           </ProjectSectionContent>
         </ProjectSection>
       </ProjectContainer>

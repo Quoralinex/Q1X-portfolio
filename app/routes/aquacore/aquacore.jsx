@@ -1,79 +1,112 @@
-import { Footer } from '~/components/footer';
+import aquacoreArray from '~/assets/portfolio/aquacore-underwater-turbines.png';
+import aquacoreCell from '~/assets/portfolio/aquacore-quantum-water-cell.png';
+import aquacoreBattery from '~/assets/portfolio/aquacore-water-battery-chart.png';
+import aquacoreMolecule from '~/assets/portfolio/aquacore-logo-molecule.png';
 import { Button } from '~/components/button';
+import { Footer } from '~/components/footer';
+import { List, ListItem } from '~/components/list';
+import { Image } from '~/components/image';
 import {
   ProjectContainer,
   ProjectHeader,
+  ProjectImage,
   ProjectSection,
+  ProjectSectionColumns,
   ProjectSectionContent,
   ProjectSectionHeading,
   ProjectSectionText,
   ProjectTextRow,
 } from '~/layouts/project';
+import { media } from '~/utils/style';
 import { baseMeta } from '~/utils/meta';
+import styles from './aquacore.module.css';
+
+const title = 'AquaCore Technologies';
+const description = 'Water-centric energy storage and information-rich materials research.';
 
 export const meta = () => {
-  return baseMeta({
-    title: 'AquaCore Technologies',
-    description:
-      'AquaCore researches water-based energy storage and information-rich materials, from batteries to subsea turbines.',
-  });
+  return baseMeta({ title, description, prefix: 'Projects' });
 };
 
-export const AquaCore = () => {
+export const Aquacore = () => {
   return (
     <>
-      <ProjectContainer>
+      <ProjectContainer className={styles.aquacore}>
         <ProjectHeader
-          title="AquaCore Technologies"
-          description="Water as an energy storage medium and information-rich material"
+          title={title}
+          description="Exploring aqueous batteries, quantum water memory cells, and subsea turbines that make water-centric systems viable."
         />
 
-        <ProjectSection>
+        <ProjectSection padding="top">
           <ProjectSectionContent>
-            <ProjectTextRow>
-              <ProjectSectionHeading>Research areas</ProjectSectionHeading>
-              <ProjectSectionText as="div">
-                <p>
-                  AquaCore explores safer water-based batteries, thin-film quantum water memory cells, and modular subsea turbines
-                  for low-impact generation. The work looks at how water can store both energy and information in practical
-                  systems.
-                </p>
-                <p>
-                  We are building IP and demonstrators that make water-centric systems a realistic alternative to conventional
-                  lithium and purely solid-state approaches.
-                </p>
-              </ProjectSectionText>
-            </ProjectTextRow>
+            <ProjectImage
+              srcSet={`${aquacoreArray} 1600w, ${aquacoreArray} 2400w`}
+              width={2000}
+              height={1125}
+              placeholder={aquacoreArray}
+              alt="Underwater turbine array concept for tidal power"
+              sizes={`(max-width: ${media.mobile}px) 100vw, (max-width: ${media.tablet}px) 90vw, 960px`}
+            />
           </ProjectSectionContent>
         </ProjectSection>
 
         <ProjectSection>
           <ProjectSectionContent>
             <ProjectTextRow>
-              <ProjectSectionHeading>Roadmap</ProjectSectionHeading>
+              <ProjectSectionHeading>Research strands</ProjectSectionHeading>
               <ProjectSectionText as="div">
-                <p>
-                  Near-term goals include lab validation of thin-film memory cells, iterative testing of subsea turbine modules,
-                  and proof-of-concept aqueous-electrolyte batteries. Longer-term we aim to productise the most promising pathways
-                  with partners in energy and research.
-                </p>
+                <List>
+                  <ListItem>Aqueous-electrolyte batteries designed for safer energy storage.</ListItem>
+                  <ListItem>Thin-film quantum water memory cells for experimental computing concepts.</ListItem>
+                  <ListItem>Low-impact subsea turbines intended for modular deployment.</ListItem>
+                </List>
               </ProjectSectionText>
             </ProjectTextRow>
           </ProjectSectionContent>
         </ProjectSection>
 
         <ProjectSection>
+          <ProjectSectionColumns>
+            <Image
+              className={styles.galleryImage}
+              srcSet={`${aquacoreMolecule} 800w, ${aquacoreMolecule} 1600w`}
+              width={1200}
+              height={1200}
+              placeholder={aquacoreMolecule}
+              alt="AquaCore molecule lockup"
+              sizes={`(max-width: ${media.mobile}px) 80vw, 360px`}
+            />
+            <Image
+              className={styles.galleryImage}
+              srcSet={`${aquacoreCell} 800w, ${aquacoreCell} 1600w`}
+              width={1200}
+              height={1200}
+              placeholder={aquacoreCell}
+              alt="Diagram of a quantum water memory cell"
+              sizes={`(max-width: ${media.mobile}px) 80vw, 360px`}
+            />
+            <Image
+              className={styles.galleryImage}
+              srcSet={`${aquacoreBattery} 800w, ${aquacoreBattery} 1600w`}
+              width={1200}
+              height={1200}
+              placeholder={aquacoreBattery}
+              alt="Comparison of water-based battery performance"
+              sizes={`(max-width: ${media.mobile}px) 80vw, 360px`}
+            />
+          </ProjectSectionColumns>
+        </ProjectSection>
+
+        <ProjectSection>
           <ProjectSectionContent>
             <ProjectTextRow>
-              <ProjectSectionHeading>Discuss a collaboration</ProjectSectionHeading>
+              <ProjectSectionHeading>Partnerships</ProjectSectionHeading>
               <ProjectSectionText as="div">
-                <p>
-                  To learn more about AquaCore research or explore collaboration opportunities, get in touch with the team.
-                </p>
-                <Button iconHoverShift href="/contact" iconEnd="arrow-right">
-                  Contact us
-                </Button>
+                AquaCore research is progressing with lab partners and domain experts focused on safer storage, maritime energy, and novel materials. We are open to collaboration on prototyping and field data.
               </ProjectSectionText>
+              <Button iconHoverShift href="/contact" iconEnd="arrow-right">
+                Contact the team
+              </Button>
             </ProjectTextRow>
           </ProjectSectionContent>
         </ProjectSection>

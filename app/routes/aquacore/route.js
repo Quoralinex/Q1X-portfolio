@@ -1,1 +1,1 @@
-export { AquaCore as default, meta } from './aquacore';
+export { Aquacore as default, meta } from './aquacore';
