@@ -2,17 +2,18 @@
   .footer {
     --lineHeightBody: 1.1;
 
+    width: 100%;
+    padding: var(--space3XL) 0;
+    z-index: var(--zIndex2);
+    position: relative;
+    color: var(--textLight);
+  }
+
+  .content {
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
     justify-content: center;
-    width: 100%;
-    padding: var(--space3XL) clamp(1.5rem, 4vw, 2.75rem);
-    z-index: var(--zIndex2);
-    position: relative;
-    color: var(--textLight);
-    max-width: 1280px;
-    margin: 0 auto;
   }
 
   .link {

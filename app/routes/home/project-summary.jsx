@@ -1,4 +1,5 @@
 import { Button } from '~/components/button';
+import { ContentContainer } from '~/components/content-container/content-container';
 import { Heading } from '~/components/heading';
 import { Image } from '~/components/image';
 import { Section } from '~/components/section';
@@ -167,16 +168,18 @@ export function ProjectSummary({
       tabIndex={-1}
       {...rest}
     >
-      <div className={styles.content} data-alternate={alternate}>
-        <Transition in={sectionVisible || focused}>
-          {({ visible }) => (
-            <>
-              <div className={styles.textColumn}>{renderDetails(visible)}</div>
-              <div className={styles.mediaColumn}>{renderPreview(visible)}</div>
-            </>
-          )}
-        </Transition>
-      </div>
+      <ContentContainer>
+        <div className={styles.content} data-alternate={alternate}>
+          <Transition in={sectionVisible || focused}>
+            {({ visible }) => (
+              <>
+                <div className={styles.textColumn}>{renderDetails(visible)}</div>
+                <div className={styles.mediaColumn}>{renderPreview(visible)}</div>
+              </>
+            )}
+          </Transition>
+        </div>
+      </ContentContainer>
     </Section>
   );
 }

@@ -1,10 +1,8 @@
 .profile {
-  padding: clamp(4rem, 6vw, 6rem) clamp(1.5rem, 4vw, 2.75rem);
+  padding: clamp(4rem, 6vw, 6rem) 0;
 }
 
 .content {
-  max-width: 1180px;
-  margin: 0 auto;
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   gap: clamp(2.5rem, 5vw, 3.5rem);
