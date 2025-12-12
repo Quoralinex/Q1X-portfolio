@@ -1,0 +1,8 @@
+.aquacore {
+  background: var(--surface1);
+}
+
+.galleryImage {
+  border-radius: 18px;
+  overflow: hidden;
+}

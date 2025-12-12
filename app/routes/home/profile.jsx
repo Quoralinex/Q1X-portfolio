@@ -32,7 +32,7 @@ export const Profile = ({ id, visible, sectionRef }) => {
             <div className={styles.content} ref={nodeRef}>
               <div className={styles.textColumn}>
                 <Heading className={styles.title} data-visible={visible} level={3} id={titleId}>
-                  About Quoralinex / Q1X
+                  About Q1X
                 </Heading>
                 <Text className={styles.description} data-visible={visible} size="l" as="p">
                   Quoralinex (Q1X) is a small, independent group focused on the intersection of
