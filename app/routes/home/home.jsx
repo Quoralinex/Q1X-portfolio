@@ -99,7 +99,7 @@ export const Home = () => {
           title="Equitable Journeys"
           description="Equitable Journeys is a not-for-profit platform that helps learners choose the right qualifications, funding routes, and study options across the UK and Europe. We work with councils, youth projects, charities, and employers to map real-world pathways using relatable stories, real examples, and pre-recorded coaching, with the goal of delivering guidance that matches the quality available to those with private advisers."
           buttonText="View platform roadmap"
-          buttonLink="/#equitable-journeys"
+          buttonLink="/equitable-journeys"
           model={{
             type: 'image',
             alt: 'Equitable Journeys logo and interface header',
@@ -121,7 +121,7 @@ export const Home = () => {
           title="Hardline / Sentinel-X"
           description="Hardline is our protective-equipment brand, with Sentinel-X as its flagship modular armour platform combining ballistic protection, integrated sensors, and a HUD-ready helmet. The Sentinel-X helmet uses an ALON transparent ceramic visor, a carbon-fibre and Kevlar composite shell, and a modular side module sized for smartphone-class processors and batteries. Our long-term goal is a family of lightweight helmets and body armour for defence, VIP protection, critical-infrastructure security, and first responders."
           buttonText="Explore Sentinel-X concept"
-          buttonLink="/#sentinel-x"
+          buttonLink="/sentinel-x"
           model={{
             type: 'image',
             alt: 'Sentinel-X ballistic helmet concept with ALON visor and modular side module',
@@ -146,7 +146,7 @@ export const Home = () => {
           title="AquaCore Technologies"
           description="AquaCore explores how water can act as both an energy storage medium and an information-rich material, from safer water-based batteries to experimental quantum water cells. Our R&D spans aqueous-electrolyte batteries, thin-film quantum water memory cells, and modular subsea turbines for low-impact generation, building IP and demonstrators that make water-centric systems a realistic alternative to conventional lithium and purely solid-state approaches."
           buttonText="View AquaCore R&D"
-          buttonLink="/#aquacore"
+          buttonLink="/aquacore"
           model={{
             type: 'gallery',
             alt: 'AquaCore subsea turbines and research graphics',
