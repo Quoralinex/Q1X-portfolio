@@ -80,7 +80,7 @@ export const loader = async ({ request, context }) => {
   );
 };
 
-export default function App() {
+export function RootApp() {
   let { canonicalUrl, theme } = useLoaderData();
   const fetcher = useFetcher();
   const { state } = useNavigation();
@@ -141,6 +141,8 @@ export default function App() {
     </html>
   );
 }
+
+export default RootApp;
 
 export function ErrorBoundary() {
   const error = useRouteError();

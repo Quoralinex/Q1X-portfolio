@@ -19,6 +19,10 @@ export default defineConfig({
   server: {
     port: 7777,
   },
+  test: {
+    environment: 'node',
+    css: true,
+  },
   plugins: [
     mdx({
       rehypePlugins: [[rehypeImgSize, { dir: 'public' }], rehypeSlug, rehypePrism],
