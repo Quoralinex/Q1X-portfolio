@@ -1,9 +1,8 @@
 import { Button } from '~/components/button';
-import { ContentContainer } from '~/components/content-container/content-container';
 import { Divider } from '~/components/divider';
 import { Heading } from '~/components/heading';
 import { Image } from '~/components/image';
-import { Section } from '~/components/section';
+import { Section, SectionContent } from '~/components/section';
 import { Text } from '~/components/text';
 import { Transition } from '~/components/transition';
 import { useState } from 'react';
@@ -26,7 +25,7 @@ export const Profile = ({ id, visible, sectionRef }) => {
       aria-labelledby={titleId}
       tabIndex={-1}
     >
-      <ContentContainer>
+      <SectionContent>
         <Transition in={visible || focused} timeout={0}>
           {({ visible, nodeRef }) => (
             <div className={styles.content} ref={nodeRef}>
@@ -84,7 +83,7 @@ export const Profile = ({ id, visible, sectionRef }) => {
             </div>
           )}
         </Transition>
-      </ContentContainer>
+      </SectionContent>
     </Section>
   );
 };
