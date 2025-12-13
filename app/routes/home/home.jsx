@@ -39,7 +39,6 @@ export const meta = () => {
 
 export const Home = () => {
   const [visibleSections, setVisibleSections] = useState([]);
-  const [scrollIndicatorHidden, setScrollIndicatorHidden] = useState(false);
   const intro = useRef();
   const projectOne = useRef();
   const projectTwo = useRef();
@@ -64,32 +63,18 @@ export const Home = () => {
       { rootMargin: '0px 0px -10% 0px', threshold: 0.1 }
     );
 
-    const indicatorObserver = new IntersectionObserver(
-      ([entry]) => {
-        setScrollIndicatorHidden(!entry.isIntersecting);
-      },
-      { rootMargin: '-100% 0px 0px 0px' }
-    );
-
     sections.forEach(section => {
       sectionObserver.observe(section.current);
     });
 
-    indicatorObserver.observe(intro.current);
-
     return () => {
       sectionObserver.disconnect();
-      indicatorObserver.disconnect();
     };
   }, [visibleSections]);
 
   return (
     <div className={styles.home}>
-      <Intro
-        id="intro"
-        sectionRef={intro}
-        scrollIndicatorHidden={scrollIndicatorHidden}
-      />
+      <Intro id="intro" sectionRef={intro} />
       <div id="portfolio">
         <ProjectSummary
           id="equitable-journeys"

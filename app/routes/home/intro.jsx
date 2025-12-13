@@ -5,8 +5,6 @@ import { useTheme } from '~/components/theme-provider';
 import { tokens } from '~/components/theme-provider/theme';
 import { Transition } from '~/components/transition';
 import { VisuallyHidden } from '~/components/visually-hidden';
-import { Link as RouterLink } from '@remix-run/react';
-import { useScrollToHash } from '~/hooks';
 import { Suspense, lazy } from 'react';
 import { cssProps } from '~/utils/style';
 import config from '~/config.json';
@@ -17,17 +15,11 @@ const DisplacementSphere = lazy(() =>
   import('./displacement-sphere').then(module => ({ default: module.DisplacementSphere }))
 );
 
-export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
+export function Intro({ id, sectionRef, ...rest }) {
   const { theme } = useTheme();
   const titleId = `${id}-title`;
-  const scrollToHash = useScrollToHash();
   const isHydrated = useHydrated();
   const heroTitle = config.role || 'Building next-generation infrastructure and protective systems';
-
-  const handleScrollClick = event => {
-    event.preventDefault();
-    scrollToHash(event.currentTarget.href);
-  };
 
   return (
     <Section
@@ -40,7 +32,7 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
       {...rest}
     >
       <Transition in key={theme} timeout={3000}>
-        {({ visible, status }) => (
+        {({ visible }) => (
           <>
             {isHydrated && (
               <Suspense>
@@ -75,33 +67,6 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
                 </Button>
               </div>
             </header>
-            <RouterLink
-              to="/#portfolio"
-              className={styles.scrollIndicator}
-              data-status={status}
-              data-hidden={scrollIndicatorHidden}
-              onClick={handleScrollClick}
-            >
-              <VisuallyHidden>Scroll to projects</VisuallyHidden>
-            </RouterLink>
-            <RouterLink
-              to="/#portfolio"
-              className={styles.mobileScrollIndicator}
-              data-status={status}
-              data-hidden={scrollIndicatorHidden}
-              onClick={handleScrollClick}
-            >
-              <VisuallyHidden>Scroll to projects</VisuallyHidden>
-              <svg
-                aria-hidden
-                stroke="currentColor"
-                width="43"
-                height="15"
-                viewBox="0 0 43 15"
-              >
-                <path d="M1 1l20.5 12L42 1" strokeWidth="2" fill="none" />
-              </svg>
-            </RouterLink>
           </>
         )}
       </Transition>

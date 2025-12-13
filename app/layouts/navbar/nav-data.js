@@ -27,9 +27,4 @@ export const navLinks = [
 ];
 
 export const socialLinks = [
-  {
-    label: 'CPMS',
-    url: 'https://cpms.quoralinex.com',
-    icon: 'arrow-right',
-  },
 ];
