@@ -5,9 +5,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    padding: 0;
-    width: var(--space2XL);
+    justify-content: space-between;
+    gap: var(--spaceL);
+    padding: var(--spaceS) 0;
+    width: calc(var(--space2XL) + var(--spaceM));
     position: fixed;
     top: var(--spaceOuter);
     left: var(--spaceOuter);
@@ -24,33 +25,14 @@
     }
   }
 
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: var(--spaceS);
-    position: relative;
-    padding: var(--spaceS) var(--spaceS) var(--spaceL);
-    z-index: var(--zIndex2);
-
-    @media (--mediaMobile) {
-      padding-bottom: var(--spaceS);
-    }
-  }
-
-  .logoImage {
-    display: block;
-    max-width: 120px;
-    width: 100%;
-    height: auto;
-  }
-
   .nav {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+    align-items: stretch;
     flex: 1 1 auto;
-    max-width: var(--space2XL);
+    gap: var(--spaceL);
+    max-width: calc(var(--space2XL) + var(--spaceM));
 
     @media (--mediaMobile), (--mediaMobileLS) {
       display: none;
@@ -63,10 +45,12 @@
     flex-direction: row-reverse;
     position: relative;
     writing-mode: vertical-lr;
+    align-items: center;
+    gap: var(--spaceS);
   }
 
   .navLink {
-    padding: var(--spaceM);
+    padding: var(--spaceS) var(--spaceM);
     color: color-mix(in lab, var(--text) 80%, transparent);
     font-weight: var(--fontWeightMedium);
     font-size: var(--headerNavFontSize);
@@ -76,36 +60,20 @@
     line-height: 1;
     display: inline-flex;
     align-items: center;
+    border-radius: var(--spaceXS);
 
     &:hover,
     &:active,
     &[aria-current='page'] {
       color: var(--textBody);
     }
+  }
 
-    &::after {
-      content: '';
-      position: absolute;
-      inset-inline-start: var(--spaceS);
-      inset-inline-end: var(--spaceS);
-      block-size: 4px;
-      background: var(--accent);
-      transform: scaleY(0) translateZ(0);
-      transform-origin: bottom;
-    }
-
-    @media (--mediaUseMotion) {
-      &::after {
-        transition: transform var(--durationM) var(--bezierFastoutSlowin);
-      }
-    }
-
-    &:hover::after,
-    &:active::after,
-    &[aria-current='page']::after {
-      transform: scaleY(1) translateZ(0);
-      transform-origin: top;
-    }
+  .navFooter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spaceM);
   }
 
   .navIcons {
@@ -115,16 +83,14 @@
     justify-content: center;
     position: relative;
     z-index: var(--zIndex2);
+    gap: var(--spaceXS);
 
     @media (--mediaMobile), (--mediaMobileLS) {
       flex-direction: row;
-      position: absolute;
-      bottom: var(--spaceXL);
-      left: var(--spaceXL);
+      position: static;
     }
 
     @media (max-width: 820px) and (max-height: 420px) {
-      left: var(--spaceL);
       transform: none;
       flex-direction: column;
       align-items: center;
@@ -165,10 +131,12 @@
     transition-timing-function: var(--bezierFastoutSlowin);
     display: none;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: stretch;
+    justify-content: flex-start;
     -webkit-backdrop-filter: var(--backdrop);
     backdrop-filter: var(--backdrop);
+    padding: var(--space3XL) var(--space2XL);
+    gap: var(--spaceM);
 
     @media (--mediaMobile), (--mediaMobileLS) {
       display: flex;
@@ -181,6 +149,13 @@
     &[data-visible='true'] {
       transform: none;
     }
+  }
+
+  .mobileNavContent {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spaceM);
+    align-items: center;
   }
 
   .mobileNavLink {
@@ -211,34 +186,17 @@
       --headerNavFontSize: calc((18 / 16) * 1rem);
     }
 
-    &::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      right: var(--space3XL);
-      left: var(--space3XL);
-      height: 4px;
-      background: var(--accent);
-      transform: scaleX(0) translateY(-1px);
-      transform-origin: right;
-    }
-
-    @media (--mediaUseMotion) {
-      &::after {
-        transition: transform var(--durationM) var(--bezierFastoutSlowin);
-      }
-    }
-
-    &:hover::after,
-    &:active::after,
-    &:focus::after {
-      transform: scaleX(1) translateY(-1px);
-      transform-origin: left;
-    }
-
     &[data-visible='true'] {
       opacity: 1;
       transform: none;
     }
+  }
+
+  .mobileActions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spaceM);
+    align-items: center;
   }
 }

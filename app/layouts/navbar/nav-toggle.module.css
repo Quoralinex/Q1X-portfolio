@@ -5,7 +5,7 @@
 
     position: fixed;
     top: var(--inset);
-    right: var(--inset);
+    left: var(--inset);
     z-index: var(--zIndex4);
     display: none;
 

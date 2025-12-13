@@ -1,70 +1,58 @@
 @layer layout {
   .toggle {
-    --offset: 6px;
-    --inset: calc(var(--spaceOuter) - var(--offset));
-
     display: inline-flex;
     align-items: center;
-    gap: var(--spaceS);
-    position: fixed;
-    z-index: var(--zIndex4);
-    top: var(--inset);
-    right: var(--inset);
-    transform: translate3d(0, 0, 0);
-    padding: var(--spaceS) var(--spaceM);
+    gap: var(--spaceXS);
+    padding: var(--spaceXS) var(--spaceM);
     border-radius: 999px;
     background: color-mix(in lab, var(--backgroundLight) 70%, transparent);
-    border: 1px solid color-mix(in lab, var(--accent) 50%, var(--text) 30%);
-    box-shadow: 0 12px 30px color-mix(in lab, var(--black) 18%, transparent);
-    color: var(--textTitle);
-    backdrop-filter: blur(12px) saturate(130%);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    border: 1px solid color-mix(in lab, var(--text) 18%, transparent);
+    box-shadow: 0 8px 18px color-mix(in lab, var(--black) 12%, transparent);
+    color: var(--textBody);
     font-weight: var(--fontWeightMedium);
-    font-size: calc((11 / 16) * 1rem);
+    font-size: calc((12 / 16) * 1rem);
+    letter-spacing: 0.02em;
+    width: max-content;
 
     @media (--mediaUseMotion) {
-      transition-property: transform, color, border, background, box-shadow;
-      transition-duration: var(--durationL);
+      transition-property: color, border, background, box-shadow;
+      transition-duration: var(--durationM);
       transition-timing-function: var(--bezierFastoutSlowin);
     }
 
     @media (--mediaMobile), (--mediaMobileLS) {
-      &:not([data-mobile='true']) {
-        display: none;
-      }
+      width: 100%;
+      justify-content: center;
     }
 
     &[data-mobile='true'] {
-      --offset: var(--spaceXS);
-      --inset: calc(var(--spaceXL) - var(--offset));
-
-      top: unset;
-      bottom: var(--inset);
-      margin-top: 0;
-      margin-right: 0;
-      box-shadow: 0 8px 22px color-mix(in lab, var(--black) 12%, transparent);
+      width: 100%;
+      justify-content: center;
+      box-shadow: 0 6px 16px color-mix(in lab, var(--black) 10%, transparent);
     }
 
     &[data-theme='dark'] {
-      background: color-mix(in lab, var(--backgroundLight) 20%, transparent);
-      border-color: color-mix(in lab, var(--accent) 70%, var(--text) 15%);
+      background: color-mix(in lab, var(--backgroundLight) 25%, transparent);
+      border-color: color-mix(in lab, var(--accent) 40%, var(--text) 20%);
       color: color-mix(in lab, var(--text) 90%, transparent);
-      box-shadow: 0 14px 36px color-mix(in lab, var(--accent) 14%, transparent);
+      box-shadow: 0 10px 22px color-mix(in lab, var(--accent) 12%, transparent);
     }
   }
 
   .label {
     white-space: nowrap;
+    text-transform: capitalize;
   }
 
   .svg {
     color: inherit;
+    width: var(--space2XL);
+    height: var(--space2XL);
   }
 
   .circle {
     fill: currentColor;
-    transform: scale(0.6);
+    transform: scale(0.7);
     transform-origin: center;
 
     @media (--mediaUseMotion) {

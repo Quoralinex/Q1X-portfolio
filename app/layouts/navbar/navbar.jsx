@@ -9,12 +9,7 @@ import { cssProps, media, msToNum, numToMs } from '~/utils/style';
 import { NavToggle } from './nav-toggle';
 import { ThemeToggle } from './theme-toggle';
 import { navLinks, socialLinks } from './nav-data';
-import config from '~/config.json';
 import styles from './navbar.module.css';
-import LogoDark from '~/assets/q1x_dark_256x256.png';
-import LogoDarkLarge from '~/assets/q1x_dark_512x512.png';
-import LogoLight from '~/assets/q1x_light_256x256.png';
-import LogoLightLarge from '~/assets/q1x_light_512x512.png';
 
 export const Navbar = () => {
   const [current, setCurrent] = useState();
@@ -24,22 +19,10 @@ export const Navbar = () => {
   const location = useLocation();
   const windowSize = useWindowSize();
   const headerRef = useRef();
+  const navToggleRef = useRef();
+  const mobileNavRef = useRef();
   const isMobile = windowSize.width <= media.mobile || windowSize.height <= 696;
   const scrollToHash = useScrollToHash();
-
-  const logos = {
-    dark: {
-      src: LogoLight,
-      srcSet: `${LogoLight} 256w, ${LogoLightLarge} 512w`,
-      sizes: '(max-width: 1024px) 120px, 140px',
-    },
-    light: {
-      src: LogoDark,
-      srcSet: `${LogoDark} 256w, ${LogoDarkLarge} 512w`,
-      sizes: '(max-width: 1024px) 120px, 140px',
-    },
-  };
-  const logo = theme === 'light' ? logos.light : logos.dark;
 
   useEffect(() => {
     // Prevent ssr mismatch by storing this in state
@@ -156,27 +139,58 @@ export const Navbar = () => {
     if (menuOpen) setMenuOpen(false);
   };
 
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const handleKeydown = event => {
+      if (event.key === 'Escape') setMenuOpen(false);
+    };
+
+    const handlePointer = event => {
+      const navElement = mobileNavRef.current;
+      const isInsideNav = navElement?.contains(event.target);
+
+      if (navElement && event.target === navElement) {
+        setMenuOpen(false);
+        return;
+      }
+
+      if (isInsideNav) return;
+      if (navToggleRef.current?.contains(event.target)) return;
+      setMenuOpen(false);
+    };
+
+    const previousOverflow = document.body.style.overflow;
+
+    document.addEventListener('keydown', handleKeydown);
+    document.addEventListener('pointerdown', handlePointer);
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.removeEventListener('keydown', handleKeydown);
+      document.removeEventListener('pointerdown', handlePointer);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (!menuOpen || !isMobile) return;
+
+    const firstItem = mobileNavRef.current?.querySelector('a, button');
+    firstItem?.focus();
+  }, [menuOpen, isMobile]);
+
+  const navLabel = menuOpen ? 'Close menu' : 'Open menu';
+
   return (
     <header className={styles.navbar} ref={headerRef}>
-      <RouterLink
-        unstable_viewTransition
-        prefetch="intent"
-        to={location.pathname === '/' ? '/#intro' : '/'}
-        data-navbar-item
-        className={styles.logo}
-        aria-label={`${config.name}, ${config.role}`}
-        onClick={handleMobileNavClick}
-      >
-        <img
-          src={logo.src}
-          srcSet={logo.srcSet}
-          sizes={logo.sizes}
-          alt="Q1X logo"
-          className={styles.logoImage}
-        />
-      </RouterLink>
-      <NavToggle onClick={() => setMenuOpen(!menuOpen)} menuOpen={menuOpen} />
-      <nav className={styles.nav}>
+      <NavToggle
+        onClick={() => setMenuOpen(!menuOpen)}
+        menuOpen={menuOpen}
+        label={navLabel}
+        ref={navToggleRef}
+      />
+      <nav className={styles.nav} aria-label="Primary">
         <div className={styles.navList}>
           {navLinks.map(({ label, pathname, external }) =>
             external ? (
@@ -206,65 +220,85 @@ export const Navbar = () => {
             )
           )}
         </div>
-        <NavbarIcons desktop />
+        <div className={styles.navFooter}>
+          <NavbarIcons desktop />
+          {!isMobile && <ThemeToggle data-navbar-item />}
+        </div>
       </nav>
       <Transition unmount in={menuOpen} timeout={msToNum(tokens.base.durationL)}>
         {({ visible, nodeRef }) => (
-          <nav className={styles.mobileNav} data-visible={visible} ref={nodeRef}>
-            {navLinks.map(({ label, pathname, external }, index) => {
-              const linkProps = {
-                key: label,
-                className: styles.mobileNavLink,
-                'data-visible': visible,
-                onClick: () => setMenuOpen(false),
-                style: cssProps({
-                  transitionDelay: numToMs(
-                    Number(msToNum(tokens.base.durationS)) + index * 50
-                  ),
-                }),
-              };
+          <nav
+            className={styles.mobileNav}
+            data-visible={visible}
+            ref={node => {
+              mobileNavRef.current = node;
+              nodeRef.current = node;
+            }}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation"
+          >
+            <div className={styles.mobileNavContent} data-visible={visible}>
+              {navLinks.map(({ label, pathname, external }, index) => {
+                const linkProps = {
+                  key: label,
+                  className: styles.mobileNavLink,
+                  'data-visible': visible,
+                  onClick: () => setMenuOpen(false),
+                  style: cssProps({
+                    transitionDelay: numToMs(
+                      Number(msToNum(tokens.base.durationS)) + index * 50
+                    ),
+                  }),
+                };
 
-              return external ? (
-                <a href={pathname} target="_blank" rel="noreferrer noopener" {...linkProps}>
-                  {label}
-                </a>
-              ) : (
-                <RouterLink
-                  unstable_viewTransition
-                  prefetch="intent"
-                  to={pathname}
-                  aria-current={getCurrent(pathname)}
-                  onClick={handleMobileNavClick}
-                  {...linkProps}
-                >
-                  {label}
-                </RouterLink>
-              );
-            })}
-            <NavbarIcons />
-            <ThemeToggle isMobile />
+                return external ? (
+                  <a href={pathname} target="_blank" rel="noreferrer noopener" {...linkProps}>
+                    {label}
+                  </a>
+                ) : (
+                  <RouterLink
+                    unstable_viewTransition
+                    prefetch="intent"
+                    to={pathname}
+                    aria-current={getCurrent(pathname)}
+                    onClick={handleMobileNavClick}
+                    {...linkProps}
+                  >
+                    {label}
+                  </RouterLink>
+                );
+              })}
+              <div className={styles.mobileActions}>
+                <NavbarIcons />
+                <ThemeToggle isMobile />
+              </div>
+            </div>
           </nav>
         )}
       </Transition>
-      {!isMobile && <ThemeToggle data-navbar-item />}
     </header>
   );
 };
 
-const NavbarIcons = ({ desktop }) => (
-  <div className={styles.navIcons}>
-    {socialLinks.map(({ label, url, icon }) => (
-      <a
-        key={label}
-        data-navbar-item={desktop || undefined}
-        className={styles.navIconLink}
-        aria-label={label}
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Icon className={styles.navIcon} icon={icon} />
-      </a>
-    ))}
-  </div>
-);
+const NavbarIcons = ({ desktop }) => {
+  if (!socialLinks.length) return null;
+
+  return (
+    <div className={styles.navIcons}>
+      {socialLinks.map(({ label, url, icon }) => (
+        <a
+          key={label}
+          data-navbar-item={desktop || undefined}
+          className={styles.navIconLink}
+          aria-label={label}
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon className={styles.navIcon} icon={icon} />
+        </a>
+      ))}
+    </div>
+  );
+};
