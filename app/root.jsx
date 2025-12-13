@@ -142,6 +142,8 @@ export default function App() {
   );
 }
 
+export { App as RootApp };
+
 export function ErrorBoundary() {
   const error = useRouteError();
 

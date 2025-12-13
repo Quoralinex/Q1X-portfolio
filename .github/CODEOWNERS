@@ -1,0 +1,4 @@
+# Marc must approve critical infra changes
+wrangler.*      @marclevy
+app/root.jsx    @marclevy
+app/routes/*    @marclevy
