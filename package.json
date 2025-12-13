@@ -17,7 +17,8 @@
     "deploy": "npx wrangler versions upload",
     "dev:storybook": "storybook dev -p 6006",
     "build:storybook": "storybook build",
-    "deploy:storybook": "wrangler pages deploy ./storybook-static --project-name portfolio-storybook --branch main"
+    "deploy:storybook": "wrangler pages deploy ./storybook-static --project-name portfolio-storybook --branch main",
+    "test": "npm run build && node --test tests/routes.test.js"
   },
   "dependencies": {
     "@aws-sdk/client-ses": "^3.515.0",

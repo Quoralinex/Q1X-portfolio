@@ -5,16 +5,11 @@ import { Transition } from '~/components/transition';
 import { useScrollToHash, useWindowSize } from '~/hooks';
 import { Link as RouterLink, useLocation } from '@remix-run/react';
 import { useEffect, useRef, useState } from 'react';
-import { cssProps, media, msToNum, numToMs } from '~/utils/style';
+import { cssProps, msToNum, numToMs } from '~/utils/style';
 import { NavToggle } from './nav-toggle';
 import { ThemeToggle } from './theme-toggle';
 import { navLinks, socialLinks } from './nav-data';
-import config from '~/config.json';
 import styles from './navbar.module.css';
-import LogoDark from '~/assets/q1x_dark_256x256.png';
-import LogoDarkLarge from '~/assets/q1x_dark_512x512.png';
-import LogoLight from '~/assets/q1x_light_256x256.png';
-import LogoLightLarge from '~/assets/q1x_light_512x512.png';
 
 export const Navbar = () => {
   const [current, setCurrent] = useState();
@@ -24,22 +19,7 @@ export const Navbar = () => {
   const location = useLocation();
   const windowSize = useWindowSize();
   const headerRef = useRef();
-  const isMobile = windowSize.width <= media.mobile || windowSize.height <= 696;
   const scrollToHash = useScrollToHash();
-
-  const logos = {
-    dark: {
-      src: LogoLight,
-      srcSet: `${LogoLight} 256w, ${LogoLightLarge} 512w`,
-      sizes: '(max-width: 1024px) 120px, 140px',
-    },
-    light: {
-      src: LogoDark,
-      srcSet: `${LogoDark} 256w, ${LogoDarkLarge} 512w`,
-      sizes: '(max-width: 1024px) 120px, 140px',
-    },
-  };
-  const logo = theme === 'light' ? logos.light : logos.dark;
 
   useEffect(() => {
     // Prevent ssr mismatch by storing this in state
@@ -158,23 +138,6 @@ export const Navbar = () => {
 
   return (
     <header className={styles.navbar} ref={headerRef}>
-      <RouterLink
-        unstable_viewTransition
-        prefetch="intent"
-        to={location.pathname === '/' ? '/#intro' : '/'}
-        data-navbar-item
-        className={styles.logo}
-        aria-label={`${config.name}, ${config.role}`}
-        onClick={handleMobileNavClick}
-      >
-        <img
-          src={logo.src}
-          srcSet={logo.srcSet}
-          sizes={logo.sizes}
-          alt="Q1X logo"
-          className={styles.logoImage}
-        />
-      </RouterLink>
       <NavToggle onClick={() => setMenuOpen(!menuOpen)} menuOpen={menuOpen} />
       <nav className={styles.nav}>
         <div className={styles.navList}>
@@ -206,7 +169,10 @@ export const Navbar = () => {
             )
           )}
         </div>
-        <NavbarIcons desktop />
+        <div className={styles.navFooter}>
+          <NavbarIcons desktop />
+          <ThemeToggle data-navbar-item />
+        </div>
       </nav>
       <Transition unmount in={menuOpen} timeout={msToNum(tokens.base.durationL)}>
         {({ visible, nodeRef }) => (
@@ -241,12 +207,13 @@ export const Navbar = () => {
                 </RouterLink>
               );
             })}
-            <NavbarIcons />
-            <ThemeToggle isMobile />
+            <div className={styles.mobileNavFooter}>
+              <NavbarIcons />
+              <ThemeToggle isMobile />
+            </div>
           </nav>
         )}
       </Transition>
-      {!isMobile && <ThemeToggle data-navbar-item />}
     </header>
   );
 };
