@@ -24,26 +24,6 @@
     }
   }
 
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: var(--spaceS);
-    position: relative;
-    padding: var(--spaceS) var(--spaceS) var(--spaceL);
-    z-index: var(--zIndex2);
-
-    @media (--mediaMobile) {
-      padding-bottom: var(--spaceS);
-    }
-  }
-
-  .logoImage {
-    display: block;
-    max-width: 120px;
-    width: 100%;
-    height: auto;
-  }
-
   .nav {
     display: flex;
     flex-direction: column;
