@@ -1,6 +1,6 @@
 import { Button } from '~/components/button';
 import { Heading } from '~/components/heading';
-import { Section } from '~/components/section';
+import { Section, SectionContent } from '~/components/section';
 import { useTheme } from '~/components/theme-provider';
 import { tokens } from '~/components/theme-provider/theme';
 import { Transition } from '~/components/transition';
@@ -31,45 +31,47 @@ export function Intro({ id, sectionRef, ...rest }) {
       tabIndex={-1}
       {...rest}
     >
-      <Transition in key={theme} timeout={3000}>
-        {({ visible }) => (
-          <>
-            {isHydrated && (
-              <Suspense>
-                <DisplacementSphere />
-              </Suspense>
-            )}
-            <header className={styles.text}>
-              <Heading level={0} as="h2" className={styles.title} id={titleId}>
-                <VisuallyHidden className={styles.label}>
-                  {`${config.name} portfolio overview`}
-                </VisuallyHidden>
-                <Transition in timeout={{ enter: 3000, exit: 2000 }}>
-                  {({ status, nodeRef }) => (
-                    <span
-                      ref={nodeRef}
-                      className={styles.titleText}
-                      data-status={status}
-                      style={cssProps({ delay: tokens.base.durationM })}
-                    >
-                      {heroTitle}
-                    </span>
-                  )}
-                </Transition>
-              </Heading>
-              <p className={styles.description} data-visible={visible}>
-                A portfolio of live products and R&D spanning protective equipment, water-based energy
-                storage, data-centre consultancy, and equitable education technology.
-              </p>
-              <div className={styles.actions} data-visible={visible}>
-                <Button href="/#portfolio" iconEnd="arrow-right" iconHoverShift>
-                  View the portfolio
-                </Button>
-              </div>
-            </header>
-          </>
-        )}
-      </Transition>
+      <SectionContent className={styles.content}>
+        <Transition in key={theme} timeout={3000}>
+          {({ visible }) => (
+            <>
+              {isHydrated && (
+                <Suspense>
+                  <DisplacementSphere />
+                </Suspense>
+              )}
+              <header className={styles.text}>
+                <Heading level={0} as="h2" className={styles.title} id={titleId}>
+                  <VisuallyHidden className={styles.label}>
+                    {`${config.name} portfolio overview`}
+                  </VisuallyHidden>
+                  <Transition in timeout={{ enter: 3000, exit: 2000 }}>
+                    {({ status, nodeRef }) => (
+                      <span
+                        ref={nodeRef}
+                        className={styles.titleText}
+                        data-status={status}
+                        style={cssProps({ delay: tokens.base.durationM })}
+                      >
+                        {heroTitle}
+                      </span>
+                    )}
+                  </Transition>
+                </Heading>
+                <p className={styles.description} data-visible={visible}>
+                  A portfolio of live products and R&D spanning protective equipment, water-based energy
+                  storage, data-centre consultancy, and equitable education technology.
+                </p>
+                <div className={styles.actions} data-visible={visible}>
+                  <Button href="/#portfolio" iconEnd="arrow-right" iconHoverShift>
+                    View the portfolio
+                  </Button>
+                </div>
+              </header>
+            </>
+          )}
+        </Transition>
+      </SectionContent>
     </Section>
   );
 }

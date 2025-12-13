@@ -1,8 +1,7 @@
 import { Button } from '~/components/button';
-import { ContentContainer } from '~/components/content-container/content-container';
 import { Heading } from '~/components/heading';
 import { Image } from '~/components/image';
-import { Section } from '~/components/section';
+import { Section, SectionContent } from '~/components/section';
 import { Text } from '~/components/text';
 import { Transition } from '~/components/transition';
 import { useState } from 'react';
@@ -168,7 +167,7 @@ export function ProjectSummary({
       tabIndex={-1}
       {...rest}
     >
-      <ContentContainer>
+      <SectionContent>
         <div className={styles.content} data-alternate={alternate}>
           <Transition in={sectionVisible || focused}>
             {({ visible }) => (
@@ -179,7 +178,7 @@ export function ProjectSummary({
             )}
           </Transition>
         </div>
-      </ContentContainer>
+      </SectionContent>
     </Section>
   );
 }

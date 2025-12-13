@@ -9,3 +9,11 @@ export const Section = forwardRef(
     </Component>
   )
 );
+
+export const SectionContent = forwardRef(
+  ({ as: Component = 'div', children, className, ...rest }, ref) => (
+    <Component className={classes(styles.sectionContent, className)} ref={ref} {...rest}>
+      {children}
+    </Component>
+  )
+);
