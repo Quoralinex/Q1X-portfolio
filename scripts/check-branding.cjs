@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-const { execFileSync } = require('node:child_process');
-const { existsSync } = require('node:fs');
+const { existsSync, readdirSync, readFileSync, statSync } = require('node:fs');
+const { join } = require('node:path');
 
 const targets = ['build', 'dist', 'out', '.output', '.next'].filter(existsSync);
 const pattern = 'Quoralinex / Q1X';
@@ -10,20 +10,38 @@ if (targets.length === 0) {
   process.exit(0);
 }
 
-try {
-  const result = execFileSync('rg', ['-n', '--fixed-strings', pattern, ...targets], {
-    stdio: 'pipe',
-  }).toString();
-  console.error('Forbidden branding string found in build output:\n');
-  console.error(result);
-  process.exit(1);
-} catch (error) {
-  if (error.status === 1) {
-    console.log('Branding check passed: no forbidden strings found.');
-    process.exit(0);
-  }
+const filesWithPattern = [];
 
-  console.error('Branding check failed to run.');
-  console.error(error.message);
-  process.exit(error.status || 1);
+const walk = path => {
+  for (const entry of readdirSync(path)) {
+    const fullPath = join(path, entry);
+    const stats = statSync(fullPath);
+
+    if (stats.isDirectory()) {
+      walk(fullPath);
+      continue;
+    }
+
+    try {
+      const contents = readFileSync(fullPath, 'utf8');
+      if (contents.includes(pattern)) {
+        filesWithPattern.push(fullPath);
+      }
+    } catch (error) {
+      // Skip files that cannot be read as text (likely binary assets)
+      continue; // eslint-disable-line no-continue
+    }
+  }
+};
+
+for (const target of targets) {
+  walk(target);
 }
+
+if (filesWithPattern.length > 0) {
+  console.error('Forbidden branding string found in build output:\n');
+  filesWithPattern.forEach(file => console.error(` - ${file}`));
+  process.exit(1);
+}
+
+console.log('Branding check passed: no forbidden strings found.');

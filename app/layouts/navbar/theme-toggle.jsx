@@ -1,6 +1,6 @@
 import { useId } from 'react';
-import { Button } from '~/components/button';
 import { useTheme } from '~/components/theme-provider';
+import { VisuallyHidden } from '~/components/visually-hidden';
 import styles from './theme-toggle.module.css';
 
 export const ThemeToggle = ({ isMobile, ...rest }) => {
@@ -11,7 +11,8 @@ export const ThemeToggle = ({ isMobile, ...rest }) => {
   const isDark = theme === 'dark';
 
   return (
-    <Button
+    <button
+      type="button"
       className={styles.toggle}
       data-mobile={isMobile}
       aria-label={label}
@@ -20,10 +21,8 @@ export const ThemeToggle = ({ isMobile, ...rest }) => {
       onClick={() => toggleTheme()}
       {...rest}
     >
-      <span className={styles.label} aria-hidden>
-        {isDark ? 'Dark' : 'Light'} mode
-      </span>
-      <svg aria-hidden className={styles.svg} width="38" height="38" viewBox="0 0 38 38">
+      <VisuallyHidden>{label}</VisuallyHidden>
+      <svg aria-hidden className={styles.svg} width="28" height="28" viewBox="0 0 38 38">
         <defs>
           <mask id={maskId}>
             <circle className={styles.circle} data-mask={true} cx="19" cy="19" r="13" />
@@ -42,6 +41,6 @@ export const ThemeToggle = ({ isMobile, ...rest }) => {
           r="12"
         />
       </svg>
-    </Button>
+    </button>
   );
 };

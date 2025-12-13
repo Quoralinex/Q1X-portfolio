@@ -16,6 +16,11 @@ export default defineConfig({
   build: {
     assetsInlineLimit: 1024,
   },
+  resolve: {
+    alias: {
+      'react-dom/server': 'react-dom/server.browser',
+    },
+  },
   server: {
     port: 7777,
   },

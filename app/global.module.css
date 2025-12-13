@@ -35,8 +35,8 @@
   }
 
   :global(::selection) {
-    background: var(--accent);
-    color: var(--black);
+    background: color-mix(in lab, var(--text) 18%, transparent);
+    color: var(--textBody);
   }
 
   :global(:focus) {

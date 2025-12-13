@@ -1,61 +1,45 @@
 @layer layout {
   .toggle {
-    --offset: 6px;
-    --inset: calc(var(--spaceOuter) - var(--offset));
+    --size: var(--space2XL);
 
     display: inline-flex;
     align-items: center;
-    gap: var(--spaceS);
-    position: fixed;
-    z-index: var(--zIndex4);
-    top: var(--inset);
-    right: var(--inset);
-    transform: translate3d(0, 0, 0);
-    padding: var(--spaceS) var(--spaceM);
+    justify-content: center;
+    width: var(--size);
+    height: var(--size);
+    padding: 0;
     border-radius: 999px;
-    background: color-mix(in lab, var(--backgroundLight) 70%, transparent);
-    border: 1px solid color-mix(in lab, var(--accent) 50%, var(--text) 30%);
-    box-shadow: 0 12px 30px color-mix(in lab, var(--black) 18%, transparent);
-    color: var(--textTitle);
-    backdrop-filter: blur(12px) saturate(130%);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-weight: var(--fontWeightMedium);
-    font-size: calc((11 / 16) * 1rem);
-
-    @media (--mediaUseMotion) {
-      transition-property: transform, color, border, background, box-shadow;
-      transition-duration: var(--durationL);
-      transition-timing-function: var(--bezierFastoutSlowin);
-    }
-
-    @media (--mediaMobile), (--mediaMobileLS) {
-      &:not([data-mobile='true']) {
-        display: none;
-      }
-    }
-
-    &[data-mobile='true'] {
-      --offset: var(--spaceXS);
-      --inset: calc(var(--spaceXL) - var(--offset));
-
-      top: unset;
-      bottom: var(--inset);
-      margin-top: 0;
-      margin-right: 0;
-      box-shadow: 0 8px 22px color-mix(in lab, var(--black) 12%, transparent);
-    }
-
-    &[data-theme='dark'] {
-      background: color-mix(in lab, var(--backgroundLight) 20%, transparent);
-      border-color: color-mix(in lab, var(--accent) 70%, var(--text) 15%);
-      color: color-mix(in lab, var(--text) 90%, transparent);
-      box-shadow: 0 14px 36px color-mix(in lab, var(--accent) 14%, transparent);
-    }
+    border: 1px solid color-mix(in lab, var(--text) 20%, transparent);
+    background: color-mix(in lab, var(--backgroundLight) 55%, transparent);
+    color: var(--textBody);
+    cursor: pointer;
+    box-shadow: 0 8px 22px color-mix(in lab, var(--black) 10%, transparent);
+    transition: transform var(--durationM) var(--bezierFastoutSlowin),
+      color var(--durationM) var(--bezierFastoutSlowin),
+      border-color var(--durationM) var(--bezierFastoutSlowin),
+      background var(--durationM) var(--bezierFastoutSlowin);
   }
 
-  .label {
-    white-space: nowrap;
+  .toggle[data-theme='dark'] {
+    background: color-mix(in lab, var(--backgroundLight) 25%, transparent);
+    border-color: color-mix(in lab, var(--accent) 50%, var(--text) 20%);
+    color: color-mix(in lab, var(--text) 90%, transparent);
+    box-shadow: 0 10px 26px color-mix(in lab, var(--accent) 12%, transparent);
+  }
+
+  .toggle[data-mobile='true'] {
+    width: var(--space2XL);
+    height: var(--space2XL);
+    box-shadow: 0 6px 18px color-mix(in lab, var(--black) 8%, transparent);
+  }
+
+  .toggle:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+
+  .toggle:active {
+    transform: scale(0.96);
   }
 
   .svg {
@@ -64,7 +48,7 @@
 
   .circle {
     fill: currentColor;
-    transform: scale(0.6);
+    transform: scale(0.7);
     transform-origin: center;
 
     @media (--mediaUseMotion) {
