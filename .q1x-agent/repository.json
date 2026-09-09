@@ -1,0 +1,29 @@
+{
+  "repository": "Quoralinex/Q1X-portfolio",
+  "enabled": true,
+  "plugin": "q1x-delivery",
+  "profile": "delivery",
+  "defaultBranch": "master",
+  "license": "MIT",
+  "skills": [
+    "repository-delivery",
+    "testing",
+    "release-validation"
+  ],
+  "requiredCapabilities": [
+    "github"
+  ],
+  "optionalCapabilities": [
+    "goose-review",
+    "design-collaboration",
+    "web-deployment",
+    "systematic-debugging",
+    "test-driven-development"
+  ],
+  "permissions": {
+    "read": true,
+    "write": true,
+    "merge": "repository-policy"
+  },
+  "pluginVersion": "0.2.0"
+}
