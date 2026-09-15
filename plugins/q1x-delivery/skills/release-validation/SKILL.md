@@ -13,7 +13,7 @@ Before release or deployment:
 4. verify environment-specific secrets/configuration are supplied through approved secret stores rather than source;
 5. identify whether the release creates or changes metered infrastructure and surface that cost-bearing effect before provisioning where policy requires approval;
 6. perform dry-run/package validation where supported;
-7. smoke-test the deployed health/discovery surfaces;
-8. record the resulting version, commit and deployment state.
+7. when the release includes an authorized deployable service, smoke-test its deployed health/discovery surfaces; otherwise verify the released package or artifact with repository-native integrity, installation, publication, or equivalent checks;
+8. record the resulting version, commit and artifact/deployment state.
 
 A successful build does not by itself authorize deployment. Q1X Control Plane is not a release authority for repository agents.
